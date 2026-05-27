@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SmartBooks Pro LLC — Terms of Service. Read our service agreement, payment terms, cancellation policy, and more.">
+  <title>Terms of Service — SmartBooks Pro, LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:      #1B2A4A; --navy-mid: #243560; --navy-deep: #141f38;
+      --white:     #FFFFFF; --gold: #C9A84C; --gold-dark: #a8863a;
+      --gold-glow: rgba(201,168,76,0.25); --gray-bg: #F5F7FA;
+      --gray:      #6B7280; --gray-dark: #374151; --text: #4B5563;
+      --shadow-sm: 0 2px 12px rgba(27,42,74,0.08);
+      --shadow:    0 4px 24px rgba(27,42,74,0.12);
+      --radius: 14px; --radius-lg: 22px;
+      --ease: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: var(--text); background: var(--gray-bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: clamp(1.15rem, 2.5vw, 1.35rem); font-weight: 700; line-height: 1.3; }
+    p, li { line-height: 1.8; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 9px; font-family: inherit; font-size: 0.95rem; font-weight: 700; text-decoration: none; cursor: pointer; border: none; transition: var(--ease); }
+    .btn-gold { background: var(--gold); color: var(--white); box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); }
+
+    /* ── Lang toggle ── */
+    .lang-toggle { display: flex; background: rgba(255,255,255,0.1); border-radius: 30px; padding: 3px; gap: 2px; }
+    .lang-btn { padding: 5px 14px; border-radius: 24px; border: none; background: transparent; color: rgba(255,255,255,0.65); font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: var(--ease); font-family: inherit; }
+    .lang-btn.active { background: var(--gold); color: var(--white); }
+
+    /* ── Navbar ── */
+    #navbar { position: fixed; inset: 0 0 auto 0; z-index: 1000; transition: var(--ease); }
+    .nav-inner { background: rgba(20,31,56,0.97); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    #navbar.scrolled .nav-inner { box-shadow: 0 4px 30px rgba(20,31,56,0.4); }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1180px; margin: 0 auto; }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .nav-logo-icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .nav-logo-icon svg { display: block; width: 100%; height: 100%; }
+    .nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
+    .logo-name { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: -0.3px; line-height: 1.2; }
+    .logo-tag  { font-size: 0.66rem; color: var(--gold); font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: var(--ease); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .nav-cta { padding: 10px 20px; font-size: 0.88rem; }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--ease); transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; background: var(--navy-deep); padding: 8px 24px 24px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a { display: block; padding: 15px 0; color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: var(--ease); }
+    .mobile-menu a:hover { color: var(--gold); padding-left: 6px; }
+    .mobile-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+    .mobile-lang .lang-btn { color: rgba(255,255,255,0.6); }
+
+    /* ── Page hero ── */
+    .legal-hero {
+      background: linear-gradient(150deg, var(--navy-deep) 0%, var(--navy) 55%, #1e3670 100%);
+      padding: 140px 0 72px; position: relative; overflow: hidden;
+    }
+    .legal-hero::before {
+      content: ''; position: absolute; top: -180px; right: -120px;
+      width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .legal-hero-inner { position: relative; z-index: 1; }
+    .legal-tag {
+      display: inline-block; background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35); border-radius: 30px;
+      padding: 6px 16px; color: var(--gold); font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 0.3px; margin-bottom: 18px;
+    }
+    .legal-hero h1 { color: var(--white); margin-bottom: 14px; }
+    .legal-hero-sub { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+    .legal-hero-date { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-top: 6px; }
+
+    /* ── Content area ── */
+    .legal-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .legal-body { max-width: 860px; }
+    .legal-content { background: var(--white); border-radius: var(--radius-lg); padding: 56px 64px; box-shadow: var(--shadow); margin: -32px 0 72px; }
+
+    /* ── TOC ── */
+    .legal-toc { background: var(--gray-bg); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 48px; border: 1px solid #e8ecf4; }
+    .legal-toc-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray); margin-bottom: 14px; }
+    .legal-toc ol { padding-left: 20px; }
+    .legal-toc li { margin-bottom: 6px; }
+    .legal-toc a { color: var(--navy); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: var(--ease); }
+    .legal-toc a:hover { color: var(--gold-dark); }
+
+    /* ── Sections ── */
+    .legal-section { margin-bottom: 48px; scroll-margin-top: 96px; }
+    .legal-section:last-child { margin-bottom: 0; }
+    .legal-section-num { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold-dark); margin-bottom: 8px; }
+    .legal-section h2 { color: var(--navy); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--gray-bg); }
+    .legal-section p { margin-bottom: 14px; font-size: 0.93rem; }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul, .legal-section ol { padding-left: 22px; margin-bottom: 14px; }
+    .legal-section li { margin-bottom: 6px; font-size: 0.93rem; }
+
+    /* ── Callout boxes ── */
+    .legal-callout {
+      background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.3);
+      border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 20px; margin: 20px 0;
+    }
+    .legal-callout p { font-size: 0.88rem !important; color: var(--gray-dark); margin: 0 !important; }
+    .legal-callout strong { color: var(--navy); }
+
+    .legal-notice {
+      background: #fef3c7; border: 1px solid #f59e0b; border-radius: var(--radius);
+      padding: 16px 20px; margin: 20px 0;
+    }
+    .legal-notice p { font-size: 0.88rem !important; color: #92400e; margin: 0 !important; }
+
+    /* ── Contact box ── */
+    .legal-contact {
+      background: var(--navy); border-radius: var(--radius); padding: 28px 32px; margin-top: 32px;
+    }
+    .legal-contact p { color: rgba(255,255,255,0.7); font-size: 0.9rem !important; margin: 0 !important; }
+    .legal-contact a { color: var(--gold); text-decoration: none; }
+    .legal-contact a:hover { text-decoration: underline; }
+    .legal-contact .contact-name { font-weight: 700; color: var(--white); margin-bottom: 8px; display: block; font-size: 0.95rem; }
+
+    /* ── Divider ── */
+    .legal-hr { border: none; border-top: 1px solid #edf0f5; margin: 40px 0; }
+
+    /* ── Footer ── */
+    #footer { background: var(--navy-deep); padding: 72px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .footer-brand-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .footer-brand-icon { width: 52px; height: 52px; border-radius: 12px; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
+    .footer-brand-icon svg { display: block; width: 100%; height: 100%; }
+    .footer-brand-name { font-size: 1.35rem; font-weight: 800; color: var(--white); line-height: 1.2; }
+    .footer-brand-tag  { font-size: 0.8rem; color: var(--gold); margin-top: 2px; }
+    .footer-brand-desc { color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.75; }
+    .footer-col-title  { color: rgba(255,255,255,0.4); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 11px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: var(--ease); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-serve { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    .footer-policies { display: flex; gap: 16px; }
+    .footer-policies a { color: rgba(255,255,255,0.4); font-size: 0.78rem; text-decoration: none; transition: var(--ease); }
+    .footer-policies a:hover { color: var(--gold); }
+    .footer-lang .lang-btn { color: rgba(255,255,255,0.5); font-size: 0.78rem; }
+
+    /* ── Floating WA ── */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 998; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none; transition: var(--ease); }
+    .wa-float:hover { transform: scale(1.12); }
+    .wa-float svg { width: 28px; height: 28px; fill: var(--white); }
+    .wa-float-tooltip { position: absolute; right: 70px; background: var(--navy-deep); color: var(--white); font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px; white-space: nowrap; opacity: 0; pointer-events: none; transition: var(--ease); }
+    .wa-float:hover .wa-float-tooltip { opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-cta   { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-policies { justify-content: center; }
+    }
+    @media (max-width: 720px) {
+      .legal-content { padding: 36px 28px; margin-left: 0; margin-right: 0; border-radius: var(--radius); }
+    }
+    @media (max-width: 620px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
+            <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
+            <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
+            <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
+            <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span class="logo-name">SmartBooks Pro</span>
+          <span class="logo-tag">Pro-Level Books. Small Business Price.</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">← Back to Main Site</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+        <a href="index.html#contact" class="btn btn-gold nav-cta">Book a Free Call</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html" onclick="closeMenu()">← Back to Main Site</a></li>
+      </ul>
+      <div class="mobile-bottom">
+        <a href="index.html#contact" class="btn btn-gold" onclick="closeMenu()">Book a Free Call</a>
+        <div class="lang-toggle mobile-lang">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="legal-wrap">
+    <div class="legal-hero-inner">
+      <div class="legal-tag">Legal</div>
+      <h1>Terms of Service</h1>
+      <p class="legal-hero-sub">Please read these terms carefully before engaging our services.</p>
+      <p class="legal-hero-date">Effective Date: May 21, 2026 &nbsp;·&nbsp; SmartBooks Pro, LLC</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-wrap">
+  <div class="legal-body">
+    <div class="legal-content">
+
+      <div class="legal-notice">
+        <p><strong>Heads up:</strong> These Terms are written in plain English to be easy to read. They are legally binding. For questions, email us at <a href="mailto:smartbooksprollc@gmail.com" style="color:#92400e;font-weight:600;">smartbooksprollc@gmail.com</a> before engaging.</p>
+      </div>
+
+      <!-- TOC -->
+      <div class="legal-toc">
+        <div class="legal-toc-title">Contents</div>
+        <ol>
+          <li><a href="#s1">Agreement to These Terms</a></li>
+          <li><a href="#s2">Services We Provide</a></li>
+          <li><a href="#s3">Your Responsibilities as a Client</a></li>
+          <li><a href="#s4">Fees and Payment</a></li>
+          <li><a href="#s5">Cancellation and Refund Policy</a></li>
+          <li><a href="#s6">Confidentiality</a></li>
+          <li><a href="#s7">Your Data and Intellectual Property</a></li>
+          <li><a href="#s8">Important Disclaimers</a></li>
+          <li><a href="#s9">Limitation of Liability</a></li>
+          <li><a href="#s10">Governing Law and Disputes</a></li>
+          <li><a href="#s11">Changes to These Terms</a></li>
+          <li><a href="#s12">Contact Us</a></li>
+        </ol>
+      </div>
+
+      <!-- S1 -->
+      <div class="legal-section" id="s1">
+        <div class="legal-section-num">Section 1</div>
+        <h2>Agreement to These Terms</h2>
+        <p>These Terms of Service ("Terms") form a legally binding agreement between you ("Client," "you") and <strong>SmartBooks Pro, LLC</strong> ("Company," "we," "us"), a Florida limited liability company.</p>
+        <p>By submitting our questionnaire, making a payment, or signing a service agreement, you confirm that you have read, understood, and agreed to these Terms. If you are acting on behalf of a business entity, you represent that you are authorized to bind that entity to this agreement.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S2 -->
+      <div class="legal-section" id="s2">
+        <div class="legal-section-num">Section 2</div>
+        <h2>Services We Provide</h2>
+        <p>SmartBooks Pro provides professional bookkeeping and financial reporting services, which may include:</p>
+        <ul>
+          <li>Monthly bookkeeping and bank reconciliation</li>
+          <li>Profit &amp; Loss statements and balance sheets</li>
+          <li>Accounts Payable (AP) and Accounts Receivable (AR) management</li>
+          <li>QuickBooks Online setup, migration, and ongoing management</li>
+          <li>Job costing and project-level financial tracking</li>
+          <li>Cash flow analysis and forecasting</li>
+          <li>Payroll coordination (as an add-on service)</li>
+          <li>Books catch-up and clean-up services (one-time)</li>
+        </ul>
+        <p>The specific services included in your engagement are determined by the plan you select and any written agreements between the parties.</p>
+        <div class="legal-callout">
+          <p><strong>Important:</strong> SmartBooks Pro is a professional bookkeeping firm. We are <strong>not</strong> a Certified Public Accounting (CPA) firm and do not provide tax preparation, tax advice, audit services, legal advice, or investment advisory services. For tax filing and tax planning, consult a licensed CPA or enrolled agent.</p>
+        </div>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S3 -->
+      <div class="legal-section" id="s3">
+        <div class="legal-section-num">Section 3</div>
+        <h2>Your Responsibilities as a Client</h2>
+        <p>To enable us to deliver accurate and timely financial records, you agree to:</p>
+        <ul>
+          <li>Provide complete, accurate, and legible financial information, including bank statements, receipts, invoices, and supporting documents</li>
+          <li>Grant read-only bank feed access through QuickBooks Online where applicable</li>
+          <li>Respond to our requests for information or clarification within <strong>5 business days</strong></li>
+          <li>Notify us promptly of material changes to your business (new accounts, entity changes, significant volume increases)</li>
+          <li>Maintain an active, paid QuickBooks Online subscription where required by your plan</li>
+          <li>Not provide information you know to be false, incomplete, or misleading</li>
+        </ul>
+        <p>We are not responsible for errors in your financial records arising from inaccurate, incomplete, or untimely information you provide. We reserve the right to pause services if required information is not received within a reasonable time.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S4 -->
+      <div class="legal-section" id="s4">
+        <div class="legal-section-num">Section 4</div>
+        <h2>Fees and Payment</h2>
+        <p><strong>Monthly subscriptions</strong> are invoiced at the beginning of each billing cycle and are due within <strong>10 days</strong> of the invoice date. We accept payment via QuickBooks Payments.</p>
+        <p><strong>One-time services</strong> (catch-up bookkeeping, QuickBooks setup, cleanup) are invoiced in advance and are due before work begins.</p>
+        <p><strong>Payroll add-on</strong> fees are billed monthly alongside your base plan and are priced based on the number of employees.</p>
+        <p><strong>Late payments</strong> are subject to a <strong>1.5% monthly late fee</strong> on any unpaid balance after the due date. We reserve the right to suspend services for accounts more than 15 days past due.</p>
+        <p>All fees are listed in US Dollars. We reserve the right to adjust pricing with <strong>60 days' written notice</strong>. Continued use of services after the effective date of a price change constitutes acceptance of the new pricing.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S5 -->
+      <div class="legal-section" id="s5">
+        <div class="legal-section-num">Section 5</div>
+        <h2>Cancellation and Refund Policy</h2>
+        <p><strong>Cancellation by you:</strong> You may cancel your subscription at any time by providing <strong>30 days' written notice</strong> to <a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a>. Services and billing continue through the end of the notice period. Cancellation takes effect at the conclusion of the current billing cycle following the notice period.</p>
+        <p><strong>Cancellation by us:</strong> We may terminate your subscription with 30 days' written notice for any reason. We may terminate immediately and without notice in cases of:</p>
+        <ul>
+          <li>Non-payment of fees past 30 days due</li>
+          <li>Provision of fraudulent or materially false information</li>
+          <li>Abusive, threatening, or harassing conduct toward our team</li>
+          <li>Any activity that is illegal or violates these Terms</li>
+        </ul>
+        <p><strong>Refund policy:</strong> Monthly subscription fees are <strong>non-refundable</strong> once a billing cycle has commenced. One-time service fees for work already completed are non-refundable. If we terminate services without cause before completing a one-time project, we will refund any pre-paid fees for work not yet performed.</p>
+        <div class="legal-callout">
+          <p><strong>Upon termination:</strong> We will deliver your financial records and a data export from QuickBooks Online within <strong>30 days</strong> of the termination date. Any outstanding invoices become immediately due.</p>
+        </div>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S6 -->
+      <div class="legal-section" id="s6">
+        <div class="legal-section-num">Section 6</div>
+        <h2>Confidentiality</h2>
+        <p>We treat your financial and business information with the highest degree of confidentiality. We will not disclose your data to any third party except:</p>
+        <ul>
+          <li>As required by applicable law, regulation, or court order</li>
+          <li>To our authorized technology service providers (e.g., Intuit/QuickBooks Online) that are necessary to perform our services — these providers are bound by their own confidentiality obligations</li>
+          <li>With your prior explicit written consent</li>
+        </ul>
+        <p>Our confidentiality obligations survive the termination of this agreement for a period of <strong>5 years</strong>.</p>
+        <p>You agree to keep confidential any proprietary information, processes, or methodologies we share with you in the course of our engagement.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S7 -->
+      <div class="legal-section" id="s7">
+        <div class="legal-section-num">Section 7</div>
+        <h2>Your Data and Intellectual Property</h2>
+        <p><strong>Your data belongs to you.</strong> All financial records, source documents, and data you provide to us remain your property at all times. We claim no ownership over your business's financial information.</p>
+        <p><strong>Work product.</strong> Financial reports, reconciliations, and analyses we prepare on your behalf become your property upon receipt of full payment for the applicable period.</p>
+        <p><strong>Our property.</strong> Our website content, branding, templates, workflows, and proprietary methodologies are owned by SmartBooks Pro, LLC. You may not reproduce, distribute, or create derivative works from our materials without written permission.</p>
+        <p><strong>QuickBooks access.</strong> You grant us access to your QuickBooks Online account solely to perform the agreed-upon services. We will not access your account for any other purpose.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S8 -->
+      <div class="legal-section" id="s8">
+        <div class="legal-section-num">Section 8</div>
+        <h2>Important Disclaimers</h2>
+        <div class="legal-notice">
+          <p><strong>We are not a CPA firm.</strong> SmartBooks Pro provides bookkeeping and financial reporting only. Nothing we provide constitutes tax advice, tax preparation, legal advice, audit services, or financial planning. Always consult a licensed CPA, enrolled agent, or attorney for tax and legal matters.</p>
+        </div>
+        <p>Our services are based on the information you provide. The accuracy of your financial records depends on the completeness and accuracy of that information. We are not responsible for undisclosed transactions, omitted accounts, or information withheld by you or your bank.</p>
+        <p>We make no guarantee that our services will detect fraud, embezzlement, or other financial irregularities. If you suspect fraud, contact a forensic accountant and law enforcement.</p>
+        <p>Services are provided "as is" without warranty of any kind, express or implied, beyond what is expressly stated in this agreement.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S9 -->
+      <div class="legal-section" id="s9">
+        <div class="legal-section-num">Section 9</div>
+        <h2>Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, our total liability to you for any claim arising out of or relating to our services is limited to the <strong>total fees you paid to us in the 90 days preceding the event giving rise to the claim</strong>.</p>
+        <p>We are not liable for:</p>
+        <ul>
+          <li>Indirect, incidental, consequential, special, or punitive damages</li>
+          <li>Lost profits or lost business opportunities</li>
+          <li>Tax penalties, interest, or liabilities arising from your own financial decisions or omissions</li>
+          <li>Losses resulting from inaccurate or incomplete information you provided</li>
+          <li>Third-party service disruptions (including QuickBooks Online outages or payment processor failures)</li>
+          <li>Unauthorized access to your financial data resulting from compromised credentials on your end</li>
+        </ul>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S10 -->
+      <div class="legal-section" id="s10">
+        <div class="legal-section-num">Section 10</div>
+        <h2>Governing Law and Disputes</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of the <strong>State of Florida</strong>, without regard to its conflict of law provisions.</p>
+        <p><strong>Informal resolution:</strong> Before pursuing formal proceedings, both parties agree to attempt to resolve any dispute through good-faith negotiation for at least <strong>30 days</strong> after written notice of the dispute.</p>
+        <p><strong>Binding arbitration:</strong> If informal resolution fails, disputes shall be resolved through binding arbitration administered by the <strong>American Arbitration Association (AAA)</strong> under its Commercial Arbitration Rules, conducted in <strong>Miami-Dade County, Florida</strong>. Each party bears its own legal fees unless the arbitrator awards otherwise.</p>
+        <p>You waive any right to participate in a class action lawsuit or class-wide arbitration against SmartBooks Pro, LLC.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S11 -->
+      <div class="legal-section" id="s11">
+        <div class="legal-section-num">Section 11</div>
+        <h2>Changes to These Terms</h2>
+        <p>We may update these Terms from time to time to reflect changes in our services, legal requirements, or business practices. We will notify active clients of material changes by email at least <strong>30 days before</strong> the new terms take effect.</p>
+        <p>The current version of these Terms will always be available at <strong>sbpus.com/terms.html</strong>. Continued use of our services after the effective date of updated Terms constitutes your acceptance.</p>
+        <p>If you do not agree to updated Terms, you may cancel your subscription as described in Section 5.</p>
+      </div>
+
+      <hr class="legal-hr">
+
+      <!-- S12 -->
+      <div class="legal-section" id="s12">
+        <div class="legal-section-num">Section 12</div>
+        <h2>Contact Us</h2>
+        <p>Questions about these Terms? We're here to help — reach out before engaging and we'll clarify anything.</p>
+        <div class="legal-contact">
+          <span class="contact-name">SmartBooks Pro, LLC — Daniel Tsou</span>
+          <p>Email: <a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a><br>
+          WhatsApp: <a href="https://wa.me/13054957636">(305) 495-7636</a><br>
+          Website: <a href="https://sbpus.com">sbpus.com</a><br>
+          Jurisdiction: Miami-Dade County, Florida, United States</p>
+        </div>
+        <p style="margin-top:20px;font-size:0.82rem;color:var(--gray);">Note: These Terms were drafted in plain language for clarity. SmartBooks Pro recommends that clients with complex legal questions consult an independent attorney.</p>
+      </div>
+
+    </div><!-- /legal-content -->
+  </div><!-- /legal-body -->
+</div><!-- /legal-wrap -->
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container" style="max-width:1180px;margin:0 auto;padding:0 24px;">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-brand-icon">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
+              <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
+              <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
+              <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
+              <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
+            </svg>
+          </div>
+          <div>
+            <div class="footer-brand-name">SmartBooks Pro, LLC</div>
+            <div class="footer-brand-tag">Pro-Level Books. Small Business Price.</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">Professional bookkeeping services for small businesses across the United States. Bilingual English/Spanish. Certified QuickBooks Online ProAdvisor.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Main Site</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="questionnaire.html">Get Started</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/daniel-tsou-73465b46" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+          <li><a href="https://wa.me/13054957636" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 SmartBooks Pro, LLC | All Rights Reserved</p>
+      <div class="footer-policies">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="lang-toggle footer-lang">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/13054957636" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-float-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.children.length === 0) el.textContent = val;
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang;
+}
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+</script>
+</body>
+</html>

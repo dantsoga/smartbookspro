@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SmartBooks Pro LLC — New client onboarding guide. Welcome, document checklist, and next steps.">
+  <meta property="og:title" content="Welcome to SmartBooks Pro, LLC — New Client Onboarding">
+  <meta property="og:description" content="Your onboarding guide for SmartBooks Pro. Document checklist, what to expect, and how to get started.">
+  <meta property="og:type" content="website">
+  <title>Welcome to SmartBooks Pro, LLC — New Client Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #1B2A4A;
+      --navy-mid:   #243560;
+      --navy-deep:  #141f38;
+      --white:      #FFFFFF;
+      --gold:       #C9A84C;
+      --gold-dark:  #a8863a;
+      --gold-glow:  rgba(201,168,76,0.25);
+      --gray-bg:    #F5F7FA;
+      --gray-card:  #EEF1F6;
+      --gray:       #6B7280;
+      --gray-dark:  #374151;
+      --text:       #4B5563;
+      --green:      #25D366;
+      --shadow-sm:  0 2px 12px rgba(27,42,74,0.08);
+      --shadow:     0 4px 24px rgba(27,42,74,0.12);
+      --shadow-lg:  0 12px 48px rgba(27,42,74,0.18);
+      --radius:     14px;
+      --radius-lg:  22px;
+      --ease:       all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 { font-size: clamp(2.2rem, 5.5vw, 3.75rem); font-weight: 800; line-height: 1.1; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15; }
+    h3 { font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight: 600; line-height: 1.3; }
+    p  { line-height: 1.75; }
+
+    /* ===== LAYOUT ===== */
+    .container  { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header h2 { color: var(--navy); margin-bottom: 14px; }
+    .section-header p  { color: var(--gray); font-size: 1.1rem; max-width: 580px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--gold-glow);
+      color: var(--gold-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 9px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: var(--ease);
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,0.45);
+    }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline-white:hover {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+    }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-navy:hover {
+      background: var(--navy-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(27,42,74,0.3);
+    }
+    .btn-outline-navy {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline-navy:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* ===== LANG TOGGLE ===== */
+    .lang-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.1);
+      border-radius: 30px;
+      padding: 3px;
+      gap: 2px;
+    }
+    .lang-btn {
+      padding: 5px 14px;
+      border-radius: 24px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: var(--ease);
+      font-family: inherit;
+    }
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      transition: var(--ease);
+    }
+    .nav-inner {
+      background: rgba(20,31,56,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    #navbar.scrolled .nav-inner {
+      box-shadow: 0 4px 30px rgba(20,31,56,0.4);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .nav-logo-icon svg { display: block; width: 100%; height: 100%; }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .logo-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .logo-tag {
+      font-size: 0.66rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--ease);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-cta { padding: 10px 20px; font-size: 0.88rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--ease);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      background: var(--navy-deep);
+      padding: 8px 24px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a {
+      display: block;
+      padding: 15px 0;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--ease);
+    }
+    .mobile-menu a:hover { color: var(--gold); padding-left: 6px; }
+    .mobile-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .mobile-cta { padding: 12px 24px; }
+    .mobile-lang .lang-btn { color: rgba(255,255,255,0.6); }
+
+    /* ===== STEP ICON (shared with timeline) ===== */
+    .step-icon-wrap {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 2px solid rgba(201,168,76,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      transition: var(--ease);
+      flex-shrink: 0;
+    }
+    .step-num {
+      position: absolute;
+      top: -6px; right: -6px;
+      background: var(--gold);
+      color: var(--white);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 2px solid var(--navy-deep);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-wrap { max-width: 780px; margin: 0 auto; }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #edf0f5;
+      transition: var(--ease);
+    }
+    .faq-item.open {
+      box-shadow: var(--shadow);
+      border-color: rgba(201,168,76,0.3);
+    }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--navy);
+      gap: 16px;
+      transition: var(--ease);
+    }
+    .faq-q:hover { color: var(--gold-dark); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--gray-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-a-inner {
+      padding: 0 24px 22px;
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 0.92rem;
+    }
+    .faq-item.open .faq-a { max-height: 300px; }
+
+    /* ===== FOOTER ===== */
+    #footer {
+      background: var(--navy-deep);
+      padding: 72px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .footer-brand-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+    .footer-brand-icon svg { display: block; width: 100%; height: 100%; }
+    .footer-brand-name { font-size: 1.35rem; font-weight: 800; color: var(--white); line-height: 1.2; }
+    .footer-brand-tag  { font-size: 0.8rem; color: var(--gold); margin-top: 2px; }
+    .footer-brand-desc { color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.75; }
+    .footer-col-title {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 11px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: var(--ease); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy, .footer-serve { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    .footer-policies { display: flex; gap: 16px; }
+    .footer-policies a { color: rgba(255,255,255,0.4); font-size: 0.78rem; text-decoration: none; transition: var(--ease); }
+    .footer-policies a:hover { color: var(--gold); }
+    .footer-lang .lang-btn { color: rgba(255,255,255,0.5); font-size: 0.78rem; }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 998;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+      text-decoration: none;
+      transition: var(--ease);
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 36px rgba(37,211,102,0.55); }
+    .wa-float svg { width: 28px; height: 28px; fill: var(--white); }
+    .wa-float-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--navy-deep);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--ease);
+    }
+    .wa-float:hover .wa-float-tooltip { opacity: 1; }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== WELCOME BANNER ===== */
+    #ob-welcome {
+      background: linear-gradient(150deg, var(--navy-deep) 0%, var(--navy) 55%, #1e3670 100%);
+      padding: 150px 0 96px;
+      position: relative;
+      overflow: hidden;
+    }
+    #ob-welcome::before {
+      content: '';
+      position: absolute;
+      top: -180px; right: -120px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #ob-welcome::after {
+      content: '';
+      position: absolute;
+      bottom: -160px; left: -80px;
+      width: 440px; height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ob-welcome-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+    .ob-welcome-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 30px;
+      padding: 7px 18px;
+      margin-bottom: 28px;
+      color: var(--gold);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .ob-welcome-h1 { color: var(--white); margin-bottom: 24px; }
+    .ob-client-name { color: var(--gold); }
+    .ob-welcome-sub {
+      color: rgba(255,255,255,0.72);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      margin-bottom: 40px;
+      max-width: 640px;
+      line-height: 1.8;
+    }
+
+    /* ===== TIMELINE ===== */
+    #ob-timeline { background: var(--gray-bg); }
+    .ob-steps-track {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .ob-steps-track::before {
+      content: '';
+      position: absolute;
+      left: 51px;
+      top: 104px;
+      bottom: 40px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0.35;
+    }
+    .ob-step {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 32px;
+      padding-bottom: 52px;
+      align-items: start;
+    }
+    .ob-step:last-child { padding-bottom: 0; }
+    .ob-step:hover .step-icon-wrap {
+      background: rgba(201,168,76,0.2);
+      border-color: var(--gold);
+      transform: scale(1.05);
+    }
+    .ob-step-body { padding-top: 12px; }
+    .ob-step-body h3 { color: var(--navy); margin-bottom: 10px; }
+    .ob-step-body p  { font-size: 0.92rem; color: var(--text); line-height: 1.75; }
+
+    /* ===== DOCUMENT CHECKLIST ===== */
+    #ob-docs { background: var(--white); }
+    .ob-checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .ob-checklist-card {
+      background: var(--gray-bg);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      border: 2px solid transparent;
+      transition: var(--ease);
+      box-shadow: var(--shadow-sm);
+    }
+    .ob-checklist-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+    .ob-checklist-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .ob-checklist-card h3 { color: var(--navy); margin-bottom: 16px; font-size: 1.05rem; }
+    .ob-checklist-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .ob-checklist-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .ob-check { color: var(--gold-dark); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .ob-note {
+      max-width: 780px;
+      margin: 36px auto 0;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      font-size: 0.88rem;
+      color: var(--gray-dark);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ===== HOW TO SEND ===== */
+    #ob-send {
+      background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #ob-send::before {
+      content: '';
+      position: absolute;
+      top: -160px; right: -160px;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #ob-send::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #ob-send .section-header h2 { color: var(--white); }
+    #ob-send .section-header p  { color: rgba(255,255,255,0.6); }
+    .ob-send-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 740px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .ob-send-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--ease);
+    }
+    .ob-send-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(201,168,76,0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .ob-send-icon { font-size: 2.8rem; margin-bottom: 18px; display: block; }
+    .ob-send-card h3 { color: var(--white); margin-bottom: 12px; }
+    .ob-send-card p  { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.7; margin-bottom: 26px; }
+    .ob-send-card .btn { width: 100%; justify-content: center; }
+
+    /* ===== EXPECTATIONS ===== */
+    #ob-expect { background: var(--gray-bg); }
+    .ob-expect-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .ob-expect-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid transparent;
+      transition: var(--ease);
+    }
+    .ob-expect-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+    }
+    .ob-expect-icon  { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+    .ob-expect-card h3 { color: var(--navy); margin-bottom: 10px; }
+    .ob-expect-card p  { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+    .ob-expect-highlight {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin: 10px 0 6px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-cta   { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid        { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-bottom      { flex-direction: column; text-align: center; }
+      .ob-expect-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .section        { padding: 72px 0; }
+      .section-header { margin-bottom: 48px; }
+      .footer-grid    { grid-template-columns: 1fr; }
+      .ob-checklist-grid { grid-template-columns: 1fr; }
+      .ob-send-grid   { grid-template-columns: 1fr; }
+      .ob-expect-grid { grid-template-columns: 1fr; }
+      .ob-steps-track::before { display: none; }
+      .ob-step { grid-template-columns: 1fr; gap: 18px; }
+      .ob-step-body { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
+            <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
+            <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
+            <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
+            <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span class="logo-name">SmartBooks Pro</span>
+          <span class="logo-tag" data-en="Pro-Level Books. Small Business Price." data-es="Libros Profesionales. Precio de Pequeño Negocio.">Pro-Level Books. Small Business Price.</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-en="&#8592; Back to Main Site" data-es="&#8592; Volver al Sitio">&#8592; Back to Main Site</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+        <a href="index.html#contact" class="btn btn-gold nav-cta" data-en="Book a Free Call" data-es="Llamada Gratis">Book a Free Call</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html" onclick="closeMenu()" data-en="&#8592; Back to Main Site" data-es="&#8592; Volver al Sitio">&#8592; Back to Main Site</a></li>
+      </ul>
+      <div class="mobile-bottom">
+        <a href="index.html#contact" class="btn btn-gold mobile-cta" onclick="closeMenu()" data-en="Book a Free Call" data-es="Llamada Gratis">Book a Free Call</a>
+        <div class="lang-toggle mobile-lang">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== WELCOME BANNER ==================== -->
+<section id="ob-welcome">
+  <div class="container">
+    <div class="ob-welcome-inner fade-up">
+      <div class="ob-welcome-tag">
+        🎉 <span data-en="New Client Onboarding" data-es="Incorporación de Nuevo Cliente">New Client Onboarding</span>
+      </div>
+      <h1 class="ob-welcome-h1">
+        <span data-en="Welcome to SmartBooks Pro," data-es="¡Bienvenido/a a SmartBooks Pro,">Welcome to SmartBooks Pro,</span>
+        <span class="ob-client-name" id="clientName">there</span><span data-en="!" data-es="!">!</span>
+      </h1>
+      <p class="ob-welcome-sub" data-en="You're in good hands. Here's everything you need to know about working with us — what to send, what to expect, and what happens next." data-es="Estás en buenas manos. Aquí encontrarás todo lo que necesitas saber sobre cómo trabajamos — qué documentos enviar, qué esperar y qué sucede a continuación.">
+        You're in good hands. Here's everything you need to know about working with us — what to send, what to expect, and what happens next.
+      </p>
+      <a href="#ob-docs" class="btn btn-gold" data-en="Jump to Checklist" data-es="Ver Lista de Documentos">Jump to Checklist</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIMELINE ==================== -->
+<section id="ob-timeline" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag" data-en="Your Journey" data-es="Tu Camino">Your Journey</div>
+      <h2 data-en="What Happens Next" data-es="Qué Sucede a Continuación">What Happens Next</h2>
+      <p data-en="Here's a clear picture of what to expect from sign-up to fully running books." data-es="Aquí tienes una visión clara de lo que puedes esperar desde el registro hasta tener tus libros en pleno funcionamiento.">Here's a clear picture of what to expect from sign-up to fully running books.</p>
+    </div>
+    <div class="ob-steps-track">
+
+      <div class="ob-step fade-up">
+        <div class="step-icon-wrap">
+          🤝
+          <div class="step-num">1</div>
+        </div>
+        <div class="ob-step-body">
+          <h3 data-en="You're Officially Onboarded" data-es="Ya Estás Incorporado/a">You're Officially Onboarded</h3>
+          <p data-en="We've received your sign-up and you'll hear from us within 1 business day to confirm your details and schedule your kickoff call." data-es="Hemos recibido tu registro y te contactaremos dentro de 1 día hábil para confirmar tus datos y programar tu llamada de inicio.">We've received your sign-up and you'll hear from us within 1 business day to confirm your details and schedule your kickoff call.</p>
+        </div>
+      </div>
+
+      <div class="ob-step fade-up">
+        <div class="step-icon-wrap">
+          📋
+          <div class="step-num">2</div>
+        </div>
+        <div class="ob-step-body">
+          <h3 data-en="Send Us Your Documents" data-es="Envíanos Tus Documentos">Send Us Your Documents</h3>
+          <p data-en="Use the checklist below to gather your statements, returns, and records. Send them securely by email or WhatsApp — we'll let you know exactly what we need." data-es="Usa la lista de verificación a continuación para reunir tus estados de cuenta, declaraciones y registros. Envíalos de forma segura por correo o WhatsApp — te diremos exactamente lo que necesitamos.">Use the checklist below to gather your statements, returns, and records. Send them securely by email or WhatsApp — we'll let you know exactly what we need.</p>
+        </div>
+      </div>
+
+      <div class="ob-step fade-up">
+        <div class="step-icon-wrap">
+          ⚙️
+          <div class="step-num">3</div>
+        </div>
+        <div class="ob-step-body">
+          <h3 data-en="We Set Up Your QuickBooks" data-es="Configuramos Tu QuickBooks">We Set Up Your QuickBooks</h3>
+          <p data-en="We'll set up or clean up your QuickBooks Online account, import your history, and build your chart of accounts — all within your first billing cycle." data-es="Configuraremos o limpiaremos tu cuenta de QuickBooks Online, importaremos tu historial y construiremos tu plan de cuentas — todo dentro de tu primer ciclo de facturación.">We'll set up or clean up your QuickBooks Online account, import your history, and build your chart of accounts — all within your first billing cycle.</p>
+        </div>
+      </div>
+
+      <div class="ob-step fade-up">
+        <div class="step-icon-wrap">
+          📊
+          <div class="step-num">4</div>
+        </div>
+        <div class="ob-step-body">
+          <h3 data-en="Your First Monthly Report" data-es="Tu Primer Informe Mensual">Your First Monthly Report</h3>
+          <p data-en="At the end of your first full month, we'll deliver your P&amp;L, balance sheet, and a brief summary of key findings — in plain language." data-es="Al final de tu primer mes completo, recibirás tu P&amp;G, balance general y un resumen breve de los hallazgos principales — en un lenguaje claro.">At the end of your first full month, we'll deliver your P&amp;L, balance sheet, and a brief summary of key findings — in plain language.</p>
+        </div>
+      </div>
+
+      <div class="ob-step fade-up">
+        <div class="step-icon-wrap">
+          ✅
+          <div class="step-num">5</div>
+        </div>
+        <div class="ob-step-body">
+          <h3 data-en="Ongoing — We Handle the Books" data-es="En Curso — Nosotros Llevamos los Libros">Ongoing — We Handle the Books</h3>
+          <p data-en="Every month we reconcile, categorize, and report. You focus on your business; we handle the numbers." data-es="Cada mes conciliamos, categorizamos e informamos. Tú te enfocas en tu negocio; nosotros manejamos los números.">Every month we reconcile, categorize, and report. You focus on your business; we handle the numbers.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DOCUMENT CHECKLIST ==================== -->
+<section id="ob-docs" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag" data-en="Document Checklist" data-es="Lista de Documentos">Document Checklist</div>
+      <h2 data-en="What to Send Us" data-es="Qué Enviarnos">What to Send Us</h2>
+      <p data-en="Gather what you have from the list below. Don't worry if you're missing something — just send what you've got and we'll sort it out together." data-es="Reúne lo que tengas de la lista a continuación. No te preocupes si te falta algo — envía lo que tengas y lo resolveremos juntos.">Gather what you have from the list below. Don't worry if you're missing something — just send what you've got and we'll sort it out together.</p>
+    </div>
+    <div class="ob-checklist-grid">
+
+      <div class="ob-checklist-card fade-up">
+        <span class="ob-checklist-icon">🏦</span>
+        <h3 data-en="Bank &amp; Credit Statements" data-es="Estados de Cuenta Bancarios y de Crédito">Bank &amp; Credit Statements</h3>
+        <ul class="ob-checklist-list">
+          <li><span class="ob-check">✓</span><span data-en="Last 3 months of bank statements (all business accounts)" data-es="Últimos 3 meses de estados de cuenta bancarios (todas las cuentas del negocio)">Last 3 months of bank statements (all business accounts)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Last 3 months of business credit card statements" data-es="Últimos 3 meses de estados de cuenta de tarjetas de crédito del negocio">Last 3 months of business credit card statements</span></li>
+          <li><span class="ob-check">✓</span><span data-en="PayPal, Square, Stripe, or other payment processor statements" data-es="Estados de cuenta de PayPal, Square, Stripe u otros procesadores de pago">PayPal, Square, Stripe, or other payment processor statements</span></li>
+        </ul>
+      </div>
+
+      <div class="ob-checklist-card fade-up">
+        <span class="ob-checklist-icon">📄</span>
+        <h3 data-en="Prior Tax Returns" data-es="Declaraciones de Impuestos Anteriores">Prior Tax Returns</h3>
+        <ul class="ob-checklist-list">
+          <li><span class="ob-check">✓</span><span data-en="Last 2 years of business tax returns (if available)" data-es="Últimas 2 declaraciones de impuestos del negocio (si están disponibles)">Last 2 years of business tax returns (if available)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Last 2 years of personal tax returns (for sole proprietors)" data-es="Últimas 2 declaraciones de impuestos personales (para propietarios únicos)">Last 2 years of personal tax returns (for sole proprietors)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Any IRS or state notices received" data-es="Cualquier aviso del IRS o del estado recibido">Any IRS or state notices received</span></li>
+        </ul>
+      </div>
+
+      <div class="ob-checklist-card fade-up">
+        <span class="ob-checklist-icon">💰</span>
+        <h3 data-en="Income Records" data-es="Registros de Ingresos">Income Records</h3>
+        <ul class="ob-checklist-list">
+          <li><span class="ob-check">✓</span><span data-en="Invoices or sales records for the current year" data-es="Facturas o registros de ventas del año actual">Invoices or sales records for the current year</span></li>
+          <li><span class="ob-check">✓</span><span data-en="1099 forms received (if applicable)" data-es="Formularios 1099 recibidos (si aplica)">1099 forms received (if applicable)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Any other income documentation" data-es="Cualquier otra documentación de ingresos">Any other income documentation</span></li>
+        </ul>
+      </div>
+
+      <div class="ob-checklist-card fade-up">
+        <span class="ob-checklist-icon">🧾</span>
+        <h3 data-en="Expense Records" data-es="Registros de Gastos">Expense Records</h3>
+        <ul class="ob-checklist-list">
+          <li><span class="ob-check">✓</span><span data-en="Major business receipts (equipment, supplies, subscriptions)" data-es="Recibos importantes del negocio (equipo, suministros, suscripciones)">Major business receipts (equipment, supplies, subscriptions)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Loan or lease agreements" data-es="Acuerdos de préstamo o arrendamiento">Loan or lease agreements</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Mileage log (if you drive for business)" data-es="Registro de millaje (si conduces por trabajo)">Mileage log (if you drive for business)</span></li>
+          <li><span class="ob-check">✓</span><span data-en="Home office details (if applicable)" data-es="Detalles de oficina en casa (si aplica)">Home office details (if applicable)</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="ob-note fade-up">
+      <span data-en="Don't have everything on this list? No worries — send what you have and we'll work with it. We'll let you know if we need anything else." data-es="¿No tienes todo lo de esta lista? No te preocupes — envía lo que tengas y trabajaremos con eso. Te avisaremos si necesitamos algo más.">Don't have everything on this list? No worries — send what you have and we'll work with it. We'll let you know if we need anything else.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW TO SEND ==================== -->
+<section id="ob-send" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag" style="background: rgba(201,168,76,0.15); color: var(--gold); border-color: rgba(201,168,76,0.4);" data-en="Secure Document Sharing" data-es="Envío Seguro de Documentos">Secure Document Sharing</div>
+      <h2 data-en="Send Your Documents Safely" data-es="Envía Tus Documentos de Forma Segura">Send Your Documents Safely</h2>
+      <p data-en="Two easy options — no special software needed." data-es="Dos opciones fáciles — no necesitas software especial.">Two easy options — no special software needed.</p>
+    </div>
+    <div class="ob-send-grid">
+
+      <div class="ob-send-card fade-up">
+        <span class="ob-send-icon">📧</span>
+        <h3 data-en="Email" data-es="Correo Electrónico">Email</h3>
+        <p data-en="Attach your documents (PDF or photos) and send to our business email. Label files clearly — for example: Bank_Jan2025.pdf." data-es="Adjunta tus documentos (PDF o fotos) y envíalos a nuestro correo. Etiqueta los archivos claramente — por ejemplo: Banco_Ene2025.pdf.">Attach your documents (PDF or photos) and send to our business email. Label files clearly — for example: Bank_Jan2025.pdf.</p>
+        <a href="mailto:smartbooksprollc@gmail.com" class="btn btn-outline-white">smartbooksprollc@gmail.com</a>
+      </div>
+
+      <div class="ob-send-card fade-up">
+        <span class="ob-send-icon">💬</span>
+        <h3>WhatsApp</h3>
+        <p data-en="Snap photos of receipts or upload PDFs directly in WhatsApp. Fast, simple, and end-to-end encrypted. We respond Monday–Friday." data-es="Toma fotos de tus recibos o sube PDFs directamente en WhatsApp. Rápido, simple y con cifrado de extremo a extremo. Respondemos de lunes a viernes.">Snap photos of receipts or upload PDFs directly in WhatsApp. Fast, simple, and end-to-end encrypted. We respond Monday–Friday.</p>
+        <a href="https://wa.me/13054957636" class="btn btn-gold" target="_blank" rel="noopener" data-en="Send via WhatsApp" data-es="Enviar por WhatsApp">Send via WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EXPECTATIONS ==================== -->
+<section id="ob-expect" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag" data-en="What to Expect" data-es="Qué Esperar">What to Expect</div>
+      <h2 data-en="Here's How We Work" data-es="Así Es Como Trabajamos">Here's How We Work</h2>
+      <p data-en="Transparent, reliable, and bilingual — every step of the way." data-es="Transparentes, confiables y bilingües — en cada paso del camino.">Transparent, reliable, and bilingual — every step of the way.</p>
+    </div>
+    <div class="ob-expect-grid">
+
+      <div class="ob-expect-card fade-up">
+        <span class="ob-expect-icon">⏱️</span>
+        <span class="ob-expect-highlight" data-en="1–3 days" data-es="1–3 días">1–3 days</span>
+        <h3 data-en="Response Time" data-es="Tiempo de Respuesta">Response Time</h3>
+        <p data-en="We respond to all messages and document submissions within 1–3 business days. Need something urgent? WhatsApp us." data-es="Respondemos a todos los mensajes y documentos en 1–3 días hábiles. ¿Algo urgente? Escríbenos por WhatsApp.">We respond to all messages and document submissions within 1–3 business days. Need something urgent? WhatsApp us.</p>
+      </div>
+
+      <div class="ob-expect-card fade-up">
+        <span class="ob-expect-icon">📅</span>
+        <span class="ob-expect-highlight" data-en="Monthly" data-es="Mensual">Monthly</span>
+        <h3 data-en="Reports Delivered" data-es="Informes Entregados">Reports Delivered</h3>
+        <p data-en="Your P&amp;L and balance sheet are delivered by the 15th of each following month, covering the prior period in full." data-es="Tu P&amp;G y balance general se entregan antes del 15 de cada mes siguiente, cubriendo el período anterior completo.">Your P&amp;L and balance sheet are delivered by the 15th of each following month, covering the prior period in full.</p>
+      </div>
+
+      <div class="ob-expect-card fade-up">
+        <span class="ob-expect-icon">🌎</span>
+        <span class="ob-expect-highlight">EN / ES</span>
+        <h3 data-en="Bilingual Support" data-es="Soporte Bilingüe">Bilingual Support</h3>
+        <p data-en="Reach out in English or Spanish — whichever is most comfortable. We'll always respond in kind." data-es="Comunícate en inglés o español — el que sea más cómodo. Siempre responderemos en el mismo idioma.">Reach out in English or Spanish — whichever is most comfortable. We'll always respond in kind.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section id="ob-faq" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag" data-en="New Client FAQ" data-es="Preguntas Frecuentes">New Client FAQ</div>
+      <h2 data-en="Questions We Often Hear" data-es="Preguntas Que Escuchamos Seguido">Questions We Often Hear</h2>
+      <p data-en="Can't find what you're looking for? Reach out any time — we're happy to help." data-es="¿No encuentras lo que buscas? Contáctanos en cualquier momento — con gusto te ayudamos.">Can't find what you're looking for? Reach out any time — we're happy to help.</p>
+    </div>
+    <div class="faq-wrap">
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="How long does the setup process take?" data-es="¿Cuánto tiempo tarda el proceso de configuración?">How long does the setup process take?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="For most clients, QuickBooks setup and initial categorization takes 5–10 business days from when we receive your documents. We'll keep you posted throughout." data-es="Para la mayoría de los clientes, la configuración de QuickBooks y la categorización inicial toman 5–10 días hábiles desde que recibimos tus documentos. Te mantendremos informado durante todo el proceso.">For most clients, QuickBooks setup and initial categorization takes 5–10 business days from when we receive your documents. We'll keep you posted throughout.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="Do I need to send documents every month?" data-es="¿Necesito enviar documentos cada mes?">Do I need to send documents every month?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="Once you're set up, most clients simply give us read-only access to their bank and credit card feeds through QuickBooks Online, so documents flow automatically. No more monthly uploads." data-es="Una vez configurado, la mayoría de los clientes nos dan acceso de solo lectura a sus cuentas bancarias y de tarjeta de crédito a través de QuickBooks Online, para que los datos fluyan automáticamente. Sin más cargas mensuales.">Once you're set up, most clients simply give us read-only access to their bank and credit card feeds through QuickBooks Online, so documents flow automatically. No more monthly uploads.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="What if I have questions between monthly reports?" data-es="¿Qué pasa si tengo preguntas entre informes mensuales?">What if I have questions between monthly reports?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="Reach out any time by email or WhatsApp (Monday–Friday). We're here to support you, not just deliver reports." data-es="Comunícate en cualquier momento por correo o WhatsApp (lunes a viernes). Estamos aquí para apoyarte, no solo para entregar informes.">Reach out any time by email or WhatsApp (Monday–Friday). We're here to support you, not just deliver reports.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="Will you file my taxes?" data-es="¿Van a presentar mis impuestos?">Will you file my taxes?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="We handle bookkeeping and financial reporting. For tax filing, we can coordinate directly with your CPA or refer you to a trusted tax professional." data-es="Nosotros nos encargamos de la contabilidad y los informes financieros. Para la presentación de impuestos, podemos coordinarnos directamente con tu CPA o referirte a un profesional fiscal de confianza.">We handle bookkeeping and financial reporting. For tax filing, we can coordinate directly with your CPA or refer you to a trusted tax professional.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="Can I upgrade or change my plan?" data-es="¿Puedo actualizar o cambiar mi plan?">Can I upgrade or change my plan?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="Absolutely. Just send us a message and we'll adjust your plan with 30 days' notice. No penalties, no hassle." data-es="Por supuesto. Solo envíanos un mensaje y ajustaremos tu plan con 30 días de aviso. Sin penalidades, sin complicaciones.">Absolutely. Just send us a message and we'll adjust your plan with 30 days' notice. No penalties, no hassle.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <div class="faq-q" onclick="toggleFAQ(this)">
+          <span data-en="Is my financial information secure?" data-es="¿Está segura mi información financiera?">Is my financial information secure?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <span data-en="Yes. QuickBooks Online uses bank-grade encryption. When sharing documents via email or WhatsApp, avoid sending full account numbers — the last 4 digits are enough for us to identify accounts." data-es="Sí. QuickBooks Online usa encriptación de nivel bancario. Al compartir documentos por correo o WhatsApp, evita enviar números de cuenta completos — los últimos 4 dígitos son suficientes para que identifiquemos las cuentas.">Yes. QuickBooks Online uses bank-grade encryption. When sharing documents via email or WhatsApp, avoid sending full account numbers — the last 4 digits are enough for us to identify accounts.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-brand-icon">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
+              <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
+              <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
+              <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
+              <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
+            </svg>
+          </div>
+          <div>
+            <div class="footer-brand-name">SmartBooks Pro, LLC</div>
+            <div class="footer-brand-tag" data-en="Pro-Level Books. Small Business Price." data-es="Libros Profesionales. Precio de Pequeño Negocio.">Pro-Level Books. Small Business Price.</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc" data-en="Professional bookkeeping services for small businesses across the United States. Bilingual English/Spanish. Certified QuickBooks Online ProAdvisor." data-es="Servicios de contabilidad profesional para pequeños negocios en todo Estados Unidos. Bilingüe inglés/español. ProAdvisor Certificado de QuickBooks Online.">Professional bookkeeping services for small businesses across the United States. Bilingual English/Spanish. Certified QuickBooks Online ProAdvisor.</p>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Navigation" data-es="Navegación">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html" data-en="Main Site" data-es="Sitio Principal">Main Site</a></li>
+          <li><a href="index.html#pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+          <li><a href="index.html#how-it-works" data-en="How It Works" data-es="Cómo Funciona">How It Works</a></li>
+          <li><a href="index.html#faq" data-en="FAQ" data-es="Preguntas Frecuentes">FAQ</a></li>
+          <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title" data-en="Contact" data-es="Contacto">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/daniel-tsou-73465b46" target="_blank" rel="noopener" data-en="LinkedIn Profile" data-es="Perfil de LinkedIn">LinkedIn Profile</a></li>
+          <li><a href="https://wa.me/13054957636" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-hr">
+    <div class="footer-bottom">
+      <p class="footer-copy" data-en="© 2025 SmartBooks Pro, LLC | All Rights Reserved" data-es="© 2025 SmartBooks Pro, LLC | Todos los Derechos Reservados">© 2025 SmartBooks Pro, LLC | All Rights Reserved</p>
+      <div class="footer-policies">
+        <a href="terms.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
+        <a href="privacy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
+      </div>
+      <div class="lang-toggle footer-lang">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== FLOATING WHATSAPP ==================== -->
+<a href="https://wa.me/13054957636" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-float-tooltip" data-en="Chat on WhatsApp" data-es="Chatear en WhatsApp">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ===== PERSONALIZED WELCOME ===== */
+(function() {
+  const name = new URLSearchParams(window.location.search).get('name');
+  const el = document.getElementById('clientName');
+  if (el && name) el.textContent = decodeURIComponent(name);
+})();
+
+/* ===== LANGUAGE TOGGLE ===== */
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      const ph = el.getAttribute('data-' + lang + '-placeholder');
+      if (ph) el.placeholder = ph;
+    } else if (el.tagName === 'OPTION') {
+      el.textContent = val;
+    } else if (el.children.length === 0) {
+      el.textContent = val;
+    }
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+  });
+
+  document.documentElement.lang = lang;
+}
+
+/* ===== NAVBAR SCROLL ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 24);
+}, { passive: true });
+
+/* ===== MOBILE MENU ===== */
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham  = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+/* ===== FAQ ACCORDION ===== */
+function toggleFAQ(questionEl) {
+  const item   = questionEl.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      const delay = (entry.target.dataset.animDelay || 0) * 100;
+      setTimeout(() => entry.target.classList.add('in'), delay);
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.dataset.animDelay = i % 5;
+  fadeObserver.observe(el);
+});
+
+/* ===== SMOOTH SCROLL (offset for fixed navbar) ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    const id = anchor.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 76;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

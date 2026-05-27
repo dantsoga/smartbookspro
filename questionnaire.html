@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SmartBooks Pro LLC — Find the right bookkeeping plan for your business in 4 quick steps.">
+  <title>Get Started — SmartBooks Pro, LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:       #1B2A4A;
+      --navy-mid:   #243560;
+      --navy-deep:  #141f38;
+      --white:      #FFFFFF;
+      --gold:       #C9A84C;
+      --gold-dark:  #a8863a;
+      --gold-glow:  rgba(201,168,76,0.25);
+      --gray-bg:    #F5F7FA;
+      --gray:       #6B7280;
+      --gray-dark:  #374151;
+      --text:       #4B5563;
+      --shadow-sm:  0 2px 12px rgba(27,42,74,0.08);
+      --shadow:     0 4px 24px rgba(27,42,74,0.12);
+      --shadow-lg:  0 12px 48px rgba(27,42,74,0.18);
+      --radius:     14px;
+      --radius-lg:  22px;
+      --ease:       all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--gray-bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; line-height: 1.2; }
+    h3 { font-size: clamp(1.05rem, 2vw, 1.2rem); font-weight: 600; line-height: 1.3; }
+    p  { line-height: 1.75; }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 9px; font-family: inherit;
+      font-size: 0.95rem; font-weight: 700; text-decoration: none;
+      cursor: pointer; border: none; transition: var(--ease); white-space: nowrap;
+    }
+    .btn-gold { background: var(--gold); color: var(--white); box-shadow: 0 4px 16px rgba(201,168,76,0.3); }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,168,76,0.45); }
+    .btn-outline-navy { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+
+    /* ===== LANG TOGGLE ===== */
+    .lang-toggle { display: flex; background: rgba(255,255,255,0.1); border-radius: 30px; padding: 3px; gap: 2px; }
+    .lang-btn {
+      padding: 5px 14px; border-radius: 24px; border: none;
+      background: transparent; color: rgba(255,255,255,0.65); font-size: 0.8rem;
+      font-weight: 700; letter-spacing: 0.5px; cursor: pointer;
+      transition: var(--ease); font-family: inherit;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--white); }
+
+    /* ===== NAVBAR ===== */
+    #navbar { position: fixed; inset: 0 0 auto 0; z-index: 1000; transition: var(--ease); }
+    .nav-inner {
+      background: rgba(20,31,56,0.97); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    #navbar.scrolled .nav-inner { box-shadow: 0 4px 30px rgba(20,31,56,0.4); }
+    .nav-container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; max-width: 1180px; margin: 0 auto;
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .nav-logo-icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .nav-logo-icon svg { display: block; width: 100%; height: 100%; }
+    .nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
+    .logo-name { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: -0.3px; line-height: 1.2; }
+    .logo-tag { font-size: 0.66rem; color: var(--gold); font-weight: 500; letter-spacing: 0.3px; }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: var(--ease); transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; background: var(--navy-deep); padding: 8px 24px 24px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a { display: block; padding: 15px 0; color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: var(--ease); }
+    .mobile-menu a:hover { color: var(--gold); padding-left: 6px; }
+    .mobile-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+    .mobile-cta { padding: 12px 24px; }
+    .mobile-lang .lang-btn { color: rgba(255,255,255,0.6); }
+
+    /* ===== MAIN WRAPPER ===== */
+    #qs-main { min-height: 100vh; padding: 110px 0 80px; }
+    .qs-container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== PROGRESS ===== */
+    .qs-progress-wrap { margin-bottom: 40px; }
+    .qs-step-dots {
+      display: flex; justify-content: space-between;
+      position: relative; margin-bottom: 10px;
+    }
+    .qs-step-dots::before {
+      content: ''; position: absolute; top: 15px; left: 15px; right: 15px;
+      height: 2px; background: #dde2ed; z-index: 0;
+    }
+    .qs-progress-line {
+      position: absolute; top: 15px; left: 15px; height: 2px;
+      background: var(--gold); z-index: 1; transition: width 0.5s ease;
+    }
+    .qs-dot {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--white); border: 2px solid #dde2ed;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--gray);
+      position: relative; z-index: 2; transition: var(--ease); flex-shrink: 0;
+    }
+    .qs-dot.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
+    .qs-dot.done { background: var(--gold); border-color: var(--gold); color: var(--white); }
+    .qs-step-labels { display: flex; justify-content: space-between; }
+    .qs-step-lbl {
+      font-size: 0.7rem; font-weight: 600; color: var(--gray);
+      text-align: center; flex: 1; transition: var(--ease);
+    }
+    .qs-step-lbl:first-child { text-align: left; }
+    .qs-step-lbl:last-child { text-align: right; }
+    .qs-step-lbl.active { color: var(--navy); }
+    .qs-step-lbl.done { color: var(--gold-dark); }
+
+    /* ===== STEP CARD ===== */
+    .qs-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 44px 48px; box-shadow: var(--shadow);
+      display: none; animation: qs-in 0.35s ease;
+    }
+    .qs-card.active { display: block; }
+    @keyframes qs-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .qs-card-header { margin-bottom: 32px; }
+    .qs-step-tag {
+      display: inline-block; background: var(--gold-glow); color: var(--gold-dark);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 12px; border: 1px solid rgba(201,168,76,0.3);
+    }
+    .qs-card-title { color: var(--navy); margin-bottom: 8px; }
+    .qs-card-sub { color: var(--gray); font-size: 0.92rem; }
+
+    /* ===== FORM INPUTS ===== */
+    .qs-field { margin-bottom: 18px; }
+    .qs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .qs-label { display: block; font-weight: 600; font-size: 0.83rem; color: var(--navy); margin-bottom: 7px; letter-spacing: 0.2px; }
+    .qs-label-hint { font-weight: 400; color: var(--gray); font-size: 0.78rem; display: block; margin-bottom: 10px; }
+    .qs-input, .qs-select {
+      width: 100%; padding: 12px 16px; border: 2px solid #E5E9F2;
+      border-radius: 9px; font-family: inherit; font-size: 0.92rem;
+      color: var(--navy); background: var(--white); transition: var(--ease);
+    }
+    .qs-input:focus, .qs-select:focus {
+      outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.12);
+    }
+    .qs-input.invalid { border-color: #ef4444; }
+    .qs-err { color: #ef4444; font-size: 0.78rem; margin-top: 5px; display: none; }
+    .qs-err.show { display: block; }
+    .qs-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7280' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    /* ===== OPTION CARDS ===== */
+    .qs-options { display: grid; gap: 10px; margin-top: 4px; }
+    .qs-options.cols-2 { grid-template-columns: 1fr 1fr; }
+    .qs-option {
+      padding: 13px 16px; border: 2px solid #E5E9F2; border-radius: 10px;
+      cursor: pointer; transition: var(--ease); background: var(--white); user-select: none;
+    }
+    .qs-option:hover { border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.03); }
+    .qs-option.selected { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+    .qs-option-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); margin-bottom: 2px; }
+    .qs-option-sub { font-size: 0.76rem; color: var(--gray); }
+
+    /* ===== TOGGLE CARDS (services) ===== */
+    .qs-toggles { display: flex; flex-direction: column; gap: 8px; }
+    .qs-toggle {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+      border: 2px solid #E5E9F2; border-radius: 10px; cursor: pointer;
+      transition: var(--ease); user-select: none;
+    }
+    .qs-toggle:hover { border-color: rgba(201,168,76,0.5); }
+    .qs-toggle.selected { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+    .qs-toggle-icon { font-size: 1.35rem; flex-shrink: 0; }
+    .qs-toggle-body { flex: 1; }
+    .qs-toggle-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); }
+    .qs-toggle-desc { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
+    .qs-toggle-check {
+      width: 24px; height: 24px; border-radius: 50%; border: 2px solid #dde2ed;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.85rem; color: transparent; transition: var(--ease);
+    }
+    .qs-toggle.selected .qs-toggle-check { background: var(--gold); border-color: var(--gold); color: var(--white); }
+
+    /* ===== SECTION DIVIDER IN FORM ===== */
+    .qs-divider { border: none; border-top: 1px solid #edf0f5; margin: 28px 0; }
+
+    /* ===== NAVIGATION ===== */
+    .qs-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+    .qs-back {
+      background: none; border: none; color: var(--gray); font-family: inherit;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 8px 0; transition: var(--ease);
+    }
+    .qs-back:hover { color: var(--navy); }
+    .qs-next { min-width: 170px; justify-content: center; }
+
+    /* ===== RECOMMENDATION CARD ===== */
+    .qs-rec-hero {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius); padding: 32px; margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .qs-rec-hero::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .qs-rec-badge {
+      display: inline-block; background: var(--gold); color: var(--white);
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px;
+    }
+    .qs-rec-name { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 4px; }
+    .qs-rec-price { font-size: 1rem; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+    .qs-rec-why { color: rgba(255,255,255,0.68); font-size: 0.88rem; line-height: 1.75; position: relative; z-index: 1; }
+
+    /* Addons */
+    .qs-addon {
+      display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px;
+      background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.28);
+      border-radius: 9px; margin-bottom: 8px;
+    }
+    .qs-addon-icon { font-size: 1.1rem; margin-top: 1px; flex-shrink: 0; }
+    .qs-addon-body { flex: 1; }
+    .qs-addon-title { font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+    .qs-addon-desc { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+    .qs-addon-price { font-size: 0.82rem; font-weight: 700; color: var(--gold-dark); white-space: nowrap; margin-top: 2px; }
+
+    /* Change plan */
+    .qs-change-wrap { text-align: center; margin: 16px 0; }
+    .qs-change-btn { background: none; border: none; color: var(--gray); font-family: inherit; font-size: 0.82rem; cursor: pointer; text-decoration: underline; transition: var(--ease); }
+    .qs-change-btn:hover { color: var(--navy); }
+    .qs-all-plans { display: none; margin-bottom: 8px; }
+    .qs-all-plans.open { display: block; }
+    .qs-plan-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px; border: 2px solid #E5E9F2; border-radius: 9px;
+      margin-bottom: 7px; cursor: pointer; transition: var(--ease);
+    }
+    .qs-plan-row:hover { border-color: var(--gold); }
+    .qs-plan-row.selected { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+    .qs-plan-row-name { font-weight: 700; font-size: 0.88rem; color: var(--navy); }
+    .qs-plan-row-price { font-weight: 800; font-size: 0.85rem; color: var(--gold-dark); }
+
+    /* ===== LOADING STEP ===== */
+    #step-loading { text-align: center; padding: 40px 48px 48px; }
+    .qs-spinner {
+      width: 56px; height: 56px; border: 4px solid rgba(201,168,76,0.2);
+      border-top-color: var(--gold); border-radius: 50%;
+      animation: spin 0.9s linear infinite; margin: 0 auto 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .qs-loading-h { color: var(--navy); margin-bottom: 10px; }
+    .qs-loading-p { color: var(--gray); font-size: 0.92rem; }
+
+    /* ===== ERROR STEP ===== */
+    #step-error { text-align: center; padding: 40px 48px 48px; }
+    .qs-error-icon { font-size: 3rem; margin-bottom: 18px; }
+    .qs-error-h { color: var(--navy); margin-bottom: 10px; }
+    .qs-error-p { color: var(--gray); font-size: 0.92rem; margin-bottom: 28px; }
+
+    /* ===== MINI FOOTER ===== */
+    .qs-footer { background: var(--navy-deep); padding: 24px; text-align: center; }
+    .qs-footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .qs-footer-links a { color: rgba(255,255,255,0.35); font-size: 0.78rem; text-decoration: none; transition: var(--ease); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .qs-footer-links a:hover { color: var(--gold); }
+    .qs-footer-copy { color: rgba(255,255,255,0.2); font-size: 0.72rem; margin-top: 8px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .wa-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 998;
+      width: 58px; height: 58px; border-radius: 50%; background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none; transition: var(--ease);
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 36px rgba(37,211,102,0.55); }
+    .wa-float svg { width: 28px; height: 28px; fill: var(--white); }
+    .wa-float-tooltip {
+      position: absolute; right: 70px; background: var(--navy-deep); color: var(--white);
+      font-size: 0.78rem; font-weight: 600; padding: 6px 12px; border-radius: 6px;
+      white-space: nowrap; opacity: 0; pointer-events: none; transition: var(--ease);
+    }
+    .wa-float:hover .wa-float-tooltip { opacity: 1; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .qs-card { padding: 28px 22px; border-radius: var(--radius); }
+      .qs-row { grid-template-columns: 1fr; }
+      .qs-options.cols-2 { grid-template-columns: 1fr; }
+      #step-loading, #step-error { padding: 24px 22px 32px; }
+    }
+    @media (max-width: 960px) {
+      .nav-links-desktop { display: none; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
+            <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
+            <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
+            <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
+            <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span class="logo-name">SmartBooks Pro</span>
+          <span class="logo-tag" data-en="Pro-Level Books. Small Business Price." data-es="Libros Profesionales. Precio de Pequeño Negocio.">Pro-Level Books. Small Business Price.</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="index.html" onclick="closeMenu()" data-en="&#8592; Back to Main Site" data-es="&#8592; Volver al Sitio">&#8592; Back to Main Site</a></li>
+      </ul>
+      <div class="mobile-bottom">
+        <div class="lang-toggle mobile-lang">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== MAIN ==================== -->
+<main id="qs-main">
+  <div class="qs-container">
+
+    <!-- Progress indicator -->
+    <div class="qs-progress-wrap" id="progressWrap">
+      <div class="qs-step-dots" id="stepDots">
+        <div class="qs-progress-line" id="progressLine" style="width:0%"></div>
+        <div class="qs-dot active" id="dot1">1</div>
+        <div class="qs-dot" id="dot2">2</div>
+        <div class="qs-dot" id="dot3">3</div>
+        <div class="qs-dot" id="dot4">4</div>
+      </div>
+      <div class="qs-step-labels">
+        <span class="qs-step-lbl active" id="lbl1" data-en="About You" data-es="Sobre Ti">About You</span>
+        <span class="qs-step-lbl" id="lbl2" data-en="Your Business" data-es="Tu Negocio">Your Business</span>
+        <span class="qs-step-lbl" id="lbl3" data-en="Services" data-es="Servicios">Services</span>
+        <span class="qs-step-lbl" id="lbl4" data-en="Your Plan" data-es="Tu Plan">Your Plan</span>
+      </div>
+    </div>
+
+    <!-- ========== STEP 1: About You ========== -->
+    <div class="qs-card active" id="step1">
+      <div class="qs-card-header">
+        <div class="qs-step-tag" data-en="Step 1 of 4" data-es="Paso 1 de 4">Step 1 of 4</div>
+        <h2 class="qs-card-title" data-en="Let's Start With You" data-es="Empecemos Contigo">Let's Start With You</h2>
+        <p class="qs-card-sub" data-en="We'll use this to set up your QuickBooks account and send your invoice." data-es="Usaremos esto para configurar tu cuenta de QuickBooks y enviarte tu factura.">We'll use this to set up your QuickBooks account and send your invoice.</p>
+      </div>
+
+      <div class="qs-row">
+        <div class="qs-field">
+          <label class="qs-label" for="firstName" data-en="First Name *" data-es="Nombre *">First Name *</label>
+          <input class="qs-input" id="firstName" type="text" autocomplete="given-name" data-en-placeholder="Jane" data-es-placeholder="María" placeholder="Jane">
+          <div class="qs-err" id="err-firstName" data-en="Please enter your first name." data-es="Por favor ingresa tu nombre.">Please enter your first name.</div>
+        </div>
+        <div class="qs-field">
+          <label class="qs-label" for="lastName" data-en="Last Name *" data-es="Apellido *">Last Name *</label>
+          <input class="qs-input" id="lastName" type="text" autocomplete="family-name" data-en-placeholder="Smith" data-es-placeholder="García" placeholder="Smith">
+          <div class="qs-err" id="err-lastName" data-en="Please enter your last name." data-es="Por favor ingresa tu apellido.">Please enter your last name.</div>
+        </div>
+      </div>
+
+      <div class="qs-field">
+        <label class="qs-label" for="businessName" data-en="Business Name *" data-es="Nombre del Negocio *">Business Name *</label>
+        <input class="qs-input" id="businessName" type="text" autocomplete="organization" data-en-placeholder="Acme Landscaping LLC" data-es-placeholder="Acme Landscaping LLC" placeholder="Acme Landscaping LLC">
+        <div class="qs-err" id="err-businessName" data-en="Please enter your business name." data-es="Por favor ingresa el nombre de tu negocio.">Please enter your business name.</div>
+      </div>
+
+      <div class="qs-row">
+        <div class="qs-field">
+          <label class="qs-label" for="email" data-en="Email Address *" data-es="Correo Electrónico *">Email Address *</label>
+          <input class="qs-input" id="email" type="email" autocomplete="email" data-en-placeholder="jane@example.com" data-es-placeholder="maria@ejemplo.com" placeholder="jane@example.com">
+          <div class="qs-err" id="err-email" data-en="Please enter a valid email." data-es="Por favor ingresa un correo válido.">Please enter a valid email.</div>
+        </div>
+        <div class="qs-field">
+          <label class="qs-label" for="phone" data-en="Phone Number" data-es="Número de Teléfono">Phone Number</label>
+          <input class="qs-input" id="phone" type="tel" autocomplete="tel" data-en-placeholder="(305) 555-0100" data-es-placeholder="(305) 555-0100" placeholder="(305) 555-0100">
+        </div>
+      </div>
+
+      <div class="qs-nav">
+        <span></span>
+        <button class="btn btn-gold qs-next" onclick="nextStep(1)" data-en="Continue →" data-es="Continuar →">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ========== STEP 2: Your Business ========== -->
+    <div class="qs-card" id="step2">
+      <div class="qs-card-header">
+        <div class="qs-step-tag" data-en="Step 2 of 4" data-es="Paso 2 de 4">Step 2 of 4</div>
+        <h2 class="qs-card-title" data-en="Tell Us About Your Business" data-es="Cuéntanos Sobre Tu Negocio">Tell Us About Your Business</h2>
+        <p class="qs-card-sub" data-en="This helps us understand your bookkeeping volume and complexity." data-es="Esto nos ayuda a entender el volumen y la complejidad de tu contabilidad.">This helps us understand your bookkeeping volume and complexity.</p>
+      </div>
+
+      <!-- Entity type -->
+      <div class="qs-field">
+        <label class="qs-label" data-en="Business Structure *" data-es="Estructura del Negocio *">Business Structure *</label>
+        <div class="qs-options cols-2" id="opts-entity">
+          <div class="qs-option" onclick="pickOption(this,'entity','sole_prop')">
+            <div class="qs-option-title" data-en="Sole Proprietor" data-es="Propietario Único">Sole Proprietor</div>
+            <div class="qs-option-sub" data-en="Self-employed / 1099" data-es="Autoempleado / 1099">Self-employed / 1099</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'entity','llc')">
+            <div class="qs-option-title">LLC</div>
+            <div class="qs-option-sub" data-en="Single or multi-member" data-es="Unipersonal o multimiembro">Single or multi-member</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'entity','s_corp')">
+            <div class="qs-option-title">S-Corp</div>
+            <div class="qs-option-sub" data-en="S Corporation" data-es="Corporación S">S Corporation</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'entity','c_corp')">
+            <div class="qs-option-title" data-en="C-Corp / Partnership" data-es="C-Corp / Sociedad">C-Corp / Partnership</div>
+            <div class="qs-option-sub" data-en="Corporation or partnership" data-es="Corporación o sociedad">Corporation or partnership</div>
+          </div>
+        </div>
+        <div class="qs-err" id="err-entity" data-en="Please select your business structure." data-es="Por favor selecciona la estructura de tu negocio.">Please select your business structure.</div>
+      </div>
+
+      <!-- Industry -->
+      <div class="qs-field">
+        <label class="qs-label" for="industry" data-en="Industry" data-es="Industria">Industry</label>
+        <select class="qs-select" id="industry">
+          <option value="" data-en="Select your industry..." data-es="Selecciona tu industria...">Select your industry...</option>
+          <option value="restaurant" data-en="Restaurant / Food Service" data-es="Restaurante / Servicio de Comida">Restaurant / Food Service</option>
+          <option value="retail" data-en="Retail / E-commerce" data-es="Venta al Por Menor / E-commerce">Retail / E-commerce</option>
+          <option value="construction" data-en="Construction / Contractors" data-es="Construcción / Contratistas">Construction / Contractors</option>
+          <option value="realestate" data-en="Real Estate / Property Management" data-es="Bienes Raíces / Administración de Propiedades">Real Estate / Property Management</option>
+          <option value="str" data-en="Short-Term Rentals (STR / Airbnb)" data-es="Alquileres a Corto Plazo (STR / Airbnb)">Short-Term Rentals (STR / Airbnb)</option>
+          <option value="healthcare" data-en="Healthcare / Medical" data-es="Salud / Medicina">Healthcare / Medical</option>
+          <option value="technology" data-en="Technology / Software" data-es="Tecnología / Software">Technology / Software</option>
+          <option value="professional" data-en="Professional Services" data-es="Servicios Profesionales">Professional Services</option>
+          <option value="transportation" data-en="Transportation / Logistics" data-es="Transporte / Logística">Transportation / Logística</option>
+          <option value="manufacturing" data-en="Manufacturing" data-es="Manufactura">Manufacturing</option>
+          <option value="nonprofit" data-en="Non-profit" data-es="Sin Fines de Lucro">Non-profit</option>
+          <option value="other" data-en="Other" data-es="Otro">Other</option>
+        </select>
+      </div>
+
+      <!-- Transactions -->
+      <div class="qs-field">
+        <label class="qs-label" data-en="Monthly Transactions *" data-es="Transacciones Mensuales *">Monthly Transactions *</label>
+        <span class="qs-label-hint" data-en="All bank + credit card transactions combined" data-es="Todas las transacciones bancarias y de tarjeta de crédito combinadas">All bank + credit card transactions combined</span>
+        <div class="qs-options cols-2" id="opts-transactions">
+          <div class="qs-option" onclick="pickOption(this,'transactions','lt50')">
+            <div class="qs-option-title" data-en="Fewer than 50" data-es="Menos de 50">Fewer than 50</div>
+            <div class="qs-option-sub" data-en="Simple, low volume" data-es="Simple, bajo volumen">Simple, low volume</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'transactions','bt50_150')">
+            <div class="qs-option-title">50 – 150</div>
+            <div class="qs-option-sub" data-en="Growing business" data-es="Negocio en crecimiento">Growing business</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'transactions','bt150_300')">
+            <div class="qs-option-title">150 – 300</div>
+            <div class="qs-option-sub" data-en="Active operations" data-es="Operaciones activas">Active operations</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'transactions','gt300')">
+            <div class="qs-option-title" data-en="More than 300" data-es="Más de 300">More than 300</div>
+            <div class="qs-option-sub" data-en="High-volume" data-es="Alto volumen">High-volume</div>
+          </div>
+        </div>
+        <div class="qs-err" id="err-transactions" data-en="Please select your transaction volume." data-es="Por favor selecciona tu volumen de transacciones.">Please select your transaction volume.</div>
+      </div>
+
+      <!-- Revenue -->
+      <div class="qs-field">
+        <label class="qs-label" data-en="Monthly Revenue (approx.) *" data-es="Ingresos Mensuales Aprox. *">Monthly Revenue (approx.) *</label>
+        <div class="qs-options cols-2" id="opts-revenue">
+          <div class="qs-option" onclick="pickOption(this,'revenue','lt10k')">
+            <div class="qs-option-title" data-en="Under $10,000" data-es="Menos de $10,000">Under $10,000</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'revenue','bt10k_50k')">
+            <div class="qs-option-title">$10,000 – $50,000</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'revenue','bt50k_200k')">
+            <div class="qs-option-title">$50,000 – $200,000</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'revenue','gt200k')">
+            <div class="qs-option-title" data-en="Over $200,000" data-es="Más de $200,000">Over $200,000</div>
+          </div>
+        </div>
+        <div class="qs-err" id="err-revenue" data-en="Please select your revenue range." data-es="Por favor selecciona tu rango de ingresos.">Please select your revenue range.</div>
+      </div>
+
+      <div class="qs-nav">
+        <button class="qs-back" onclick="prevStep(2)" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button class="btn btn-gold qs-next" onclick="nextStep(2)" data-en="Continue →" data-es="Continuar →">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ========== STEP 3: Services ========== -->
+    <div class="qs-card" id="step3">
+      <div class="qs-card-header">
+        <div class="qs-step-tag" data-en="Step 3 of 4" data-es="Paso 3 de 4">Step 3 of 4</div>
+        <h2 class="qs-card-title" data-en="What Do You Need?" data-es="¿Qué Necesitas?">What Do You Need?</h2>
+        <p class="qs-card-sub" data-en="Select all services that apply. This is how we tailor your plan recommendation." data-es="Selecciona todos los servicios que apliquen. Así personalizamos tu recomendación.">Select all services that apply. This is how we tailor your plan recommendation.</p>
+      </div>
+
+      <div class="qs-toggles">
+        <div class="qs-toggle" onclick="toggleSvc(this,'apManagement')">
+          <span class="qs-toggle-icon">📤</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Accounts Payable (AP) Management" data-es="Administración de Cuentas por Pagar (AP)">Accounts Payable (AP) Management</div>
+            <div class="qs-toggle-desc" data-en="Track and manage what you owe to vendors and suppliers" data-es="Rastrear y gestionar lo que le debes a proveedores">Track and manage what you owe to vendors and suppliers</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'arManagement')">
+          <span class="qs-toggle-icon">📥</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Accounts Receivable (AR) Management" data-es="Administración de Cuentas por Cobrar (AR)">Accounts Receivable (AR) Management</div>
+            <div class="qs-toggle-desc" data-en="Invoice tracking and follow-up on outstanding customer payments" data-es="Seguimiento de facturas y cobros pendientes de clientes">Invoice tracking and follow-up on outstanding customer payments</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'jobCosting')">
+          <span class="qs-toggle-icon">🏗️</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Job Costing" data-es="Costeo por Trabajo / Proyecto">Job Costing</div>
+            <div class="qs-toggle-desc" data-en="Track income and expenses by project, job, or client" data-es="Rastrear ingresos y gastos por proyecto, trabajo o cliente">Track income and expenses by project, job, or client</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'cashFlow')">
+          <span class="qs-toggle-icon">📈</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Cash Flow Forecasting &amp; Analysis" data-es="Análisis y Proyección de Flujo de Caja">Cash Flow Forecasting &amp; Analysis</div>
+            <div class="qs-toggle-desc" data-en="Strategic insight into your financial position and future planning" data-es="Perspectiva estratégica de tu posición financiera y planificación futura">Strategic insight into your financial position and future planning</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'payroll')">
+          <span class="qs-toggle-icon">👥</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Payroll Management" data-es="Gestión de Nómina">Payroll Management</div>
+            <div class="qs-toggle-desc" data-en="Payroll processing for employees and contractors (billed as an add-on)" data-es="Procesamiento de nómina para empleados y contratistas (se factura como servicio adicional)">Payroll processing for employees and contractors (billed as an add-on)</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'inventory')">
+          <span class="qs-toggle-icon">📦</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Inventory Tracking" data-es="Seguimiento de Inventario">Inventory Tracking</div>
+            <div class="qs-toggle-desc" data-en="Monitor stock levels and cost of goods sold" data-es="Monitorear niveles de inventario y costo de bienes vendidos">Monitor stock levels and cost of goods sold</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'multiEntity')">
+          <span class="qs-toggle-icon">🏢</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="Multiple Entities / Companies" data-es="Múltiples Entidades / Empresas">Multiple Entities / Companies</div>
+            <div class="qs-toggle-desc" data-en="Books for more than one business or legal entity" data-es="Libros para más de un negocio o entidad legal">Books for more than one business or legal entity</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
+      </div>
+
+      <hr class="qs-divider">
+
+      <!-- Books status -->
+      <div class="qs-field">
+        <label class="qs-label" data-en="How current are your books? *" data-es="¿Qué tan al día están tus libros? *">How current are your books? *</label>
+        <div class="qs-options" id="opts-booksStatus">
+          <div class="qs-option" onclick="pickOption(this,'booksStatus','current')">
+            <div class="qs-option-title" data-en="Up to date" data-es="Al día">Up to date</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'booksStatus','behind_1_3')">
+            <div class="qs-option-title" data-en="1–3 months behind" data-es="1–3 meses atrasado">1–3 months behind</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'booksStatus','behind_3_6')">
+            <div class="qs-option-title" data-en="3–6 months behind" data-es="3–6 meses atrasado">3–6 months behind</div>
+          </div>
+          <div class="qs-option" onclick="pickOption(this,'booksStatus','behind_6plus')">
+            <div class="qs-option-title" data-en="6+ months behind" data-es="6+ meses atrasado">6+ months behind</div>
+          </div>
+        </div>
+        <div class="qs-err" id="err-booksStatus" data-en="Please select the status of your books." data-es="Por favor selecciona el estado de tus libros.">Please select the status of your books.</div>
+      </div>
+
+      <div class="qs-nav">
+        <button class="qs-back" onclick="prevStep(3)" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button class="btn btn-gold qs-next" onclick="nextStep(3)" data-en="See My Recommendation →" data-es="Ver Mi Recomendación →">See My Recommendation →</button>
+      </div>
+    </div>
+
+    <!-- ========== STEP 4: Recommendation ========== -->
+    <div class="qs-card" id="step4">
+      <div class="qs-card-header">
+        <div class="qs-step-tag" data-en="Step 4 of 4" data-es="Paso 4 de 4">Step 4 of 4</div>
+        <h2 class="qs-card-title" data-en="Your Perfect Plan" data-es="Tu Plan Ideal">Your Perfect Plan</h2>
+        <p class="qs-card-sub" data-en="Based on your answers, here's what we recommend." data-es="Basándonos en tus respuestas, esto es lo que recomendamos.">Based on your answers, here's what we recommend.</p>
+      </div>
+
+      <!-- Filled by renderRecommendation() -->
+      <div class="qs-rec-hero" id="recHero">
+        <div class="qs-rec-badge" data-en="Recommended for You" data-es="Recomendado para Ti">Recommended for You</div>
+        <div class="qs-rec-name" id="recName"></div>
+        <div class="qs-rec-price" id="recPrice"></div>
+        <p class="qs-rec-why" id="recWhy"></p>
+      </div>
+
+      <!-- Add-on callouts (conditionally shown) -->
+      <div id="recAddons"></div>
+
+      <!-- Change plan -->
+      <div class="qs-change-wrap">
+        <button class="qs-change-btn" onclick="toggleAllPlans()" data-en="Want a different plan? See all options ↓" data-es="¿Quieres un plan diferente? Ver todas las opciones ↓">Want a different plan? See all options ↓</button>
+      </div>
+      <div class="qs-all-plans" id="allPlansPanel">
+        <div class="qs-plan-row" data-plan="accountant" onclick="swapPlan('accountant',this)">
+          <span class="qs-plan-row-name">Accountant</span>
+          <span class="qs-plan-row-price">$350/mo</span>
+        </div>
+        <div class="qs-plan-row" data-plan="manager" onclick="swapPlan('manager',this)">
+          <span class="qs-plan-row-name">Accounting Manager</span>
+          <span class="qs-plan-row-price">$700/mo</span>
+        </div>
+        <div class="qs-plan-row" data-plan="controller" onclick="swapPlan('controller',this)">
+          <span class="qs-plan-row-name">Controller</span>
+          <span class="qs-plan-row-price">$1,400/mo</span>
+        </div>
+        <div class="qs-plan-row" data-plan="cfo" onclick="swapPlan('cfo',this)">
+          <span class="qs-plan-row-name">CFO Advisory</span>
+          <span class="qs-plan-row-price">$2,500/mo</span>
+        </div>
+      </div>
+
+      <div class="qs-nav" style="margin-top:24px;">
+        <button class="qs-back" onclick="prevStep(4)" data-en="← Back" data-es="← Atrás">← Back</button>
+        <button class="btn btn-gold qs-next" onclick="submitQuestionnaire()" id="submitBtn" data-en="Create My Invoice →" data-es="Crear Mi Factura →">Create My Invoice →</button>
+      </div>
+    </div>
+
+    <!-- ========== LOADING ========== -->
+    <div class="qs-card" id="step-loading">
+      <div class="qs-spinner"></div>
+      <h3 class="qs-loading-h" data-en="Setting Up Your Account…" data-es="Configurando Tu Cuenta…">Setting Up Your Account…</h3>
+      <p class="qs-loading-p" data-en="We're creating your QuickBooks profile and generating your invoice. This takes just a moment." data-es="Estamos creando tu perfil de QuickBooks y generando tu factura. Solo tomará un momento.">We're creating your QuickBooks profile and generating your invoice. This takes just a moment.</p>
+    </div>
+
+    <!-- ========== ERROR ========== -->
+    <div class="qs-card" id="step-error">
+      <div class="qs-error-icon">⚠️</div>
+      <h3 class="qs-error-h" data-en="Something Went Wrong" data-es="Algo Salió Mal">Something Went Wrong</h3>
+      <p class="qs-error-p" data-en="We couldn't generate your invoice automatically. Please reach out directly and we'll set everything up for you right away." data-es="No pudimos generar tu factura automáticamente. Contáctanos directamente y lo configuraremos todo de inmediato.">We couldn't generate your invoice automatically. Please reach out directly and we'll set everything up for you right away.</p>
+      <a href="mailto:smartbooksprollc@gmail.com" class="btn btn-gold" style="margin:0 auto 12px; display:inline-flex;">smartbooksprollc@gmail.com</a><br>
+      <a href="https://wa.me/13054957636" class="btn btn-outline-navy" target="_blank" rel="noopener" style="margin: 0 auto; display:inline-flex;" data-en="Message on WhatsApp" data-es="Escribir por WhatsApp">Message on WhatsApp</a>
+    </div>
+
+  </div><!-- /qs-container -->
+</main>
+
+<!-- MINI FOOTER -->
+<footer class="qs-footer">
+  <div class="qs-footer-links">
+    <a href="index.html">Main Site</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a>
+  </div>
+  <p class="qs-footer-copy">© 2025 SmartBooks Pro, LLC | All Rights Reserved</p>
+</footer>
+
+<!-- ==================== FLOATING WHATSAPP ==================== -->
+<a href="https://wa.me/13054957636" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-float-tooltip" data-en="Chat on WhatsApp" data-es="Chatear en WhatsApp">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* ==========================================================
+   CONFIGURATION — update WORKER_URL after deploying the
+   Cloudflare Worker (see worker/wrangler.toml for setup)
+   ========================================================== */
+const CONFIG = {
+  workerUrl: 'https://smartbooks-pro-api.YOUR_SUBDOMAIN.workers.dev/api/create-client',
+  fallbackEmail: 'smartbooksprollc@gmail.com',
+  onboardingUrl: 'onboarding.html'
+};
+
+/* ===== PLANS ===== */
+const PLANS = {
+  accountant: {
+    id: 'accountant',
+    name: 'Accountant',
+    nameES: 'Accountant',
+    price: '$350/mo',
+    priceES: '$350/mes',
+    monthly: 350,
+    why: {
+      en: 'Based on your transaction volume and needs, the Accountant plan gives you clean monthly books, bank reconciliation, and clear financial statements — at the right price point for your business.',
+      es: 'Basándonos en tu volumen y necesidades, el plan Accountant te brinda libros mensuales limpios, conciliación bancaria y estados financieros claros — al precio adecuado para tu negocio.'
+    }
+  },
+  manager: {
+    id: 'manager',
+    name: 'Accounting Manager',
+    nameES: 'Gerente Contable',
+    price: '$700/mo',
+    priceES: '$700/mes',
+    monthly: 700,
+    why: {
+      en: 'Your business needs more than basic bookkeeping. The Accounting Manager plan adds accounts payable and receivable management to keep your vendors, customers, and cash flow organized.',
+      es: 'Tu negocio necesita más que contabilidad básica. El plan Gerente Contable agrega administración de cuentas por pagar y por cobrar para mantener tus proveedores, clientes y flujo de caja organizados.'
+    }
+  },
+  controller: {
+    id: 'controller',
+    name: 'Controller',
+    nameES: 'Contralor',
+    price: '$1,400/mo',
+    priceES: '$1,400/mes',
+    monthly: 1400,
+    why: {
+      en: 'With your level of complexity — job costing, higher transaction volume, and advanced reporting — the Controller plan gives you full financial oversight without the cost of a full-time hire.',
+      es: 'Con tu nivel de complejidad — costeo por trabajo, mayor volumen de transacciones e informes avanzados — el plan Contralor te brinda supervisión financiera completa sin el costo de un empleado a tiempo completo.'
+    }
+  },
+  cfo: {
+    id: 'cfo',
+    name: 'CFO Advisory',
+    nameES: 'Asesoría CFO',
+    price: '$2,500/mo',
+    priceES: '$2,500/mes',
+    monthly: 2500,
+    why: {
+      en: "Your business is at the scale where strategic financial guidance creates real value. The CFO Advisory plan combines complete bookkeeping with cash flow forecasting and strategic financial planning — a true financial partner.",
+      es: 'Tu negocio está en el nivel donde la orientación financiera estratégica crea valor real. El plan Asesoría CFO combina contabilidad completa con proyecciones de flujo de caja y planificación financiera estratégica.'
+    }
+  }
+};
+
+/* ===== STATE ===== */
+const fd = {
+  firstName: '', lastName: '', businessName: '', email: '', phone: '',
+  entity: '', industry: '', transactions: '', revenue: '',
+  apManagement: false, arManagement: false, jobCosting: false,
+  cashFlow: false, payroll: false, inventory: false, multiEntity: false,
+  booksStatus: '', selectedPlan: ''
+};
+let currentStep = 1;
+let currentLang = 'en';
+
+/* ===== LANGUAGE ===== */
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      const ph = el.getAttribute('data-' + lang + '-placeholder');
+      if (ph) el.placeholder = ph;
+    } else if (el.tagName === 'OPTION') {
+      el.textContent = val;
+    } else if (el.children.length === 0) {
+      el.textContent = val;
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+  });
+  document.documentElement.lang = lang;
+  if (fd.selectedPlan) renderRecommendation(fd.selectedPlan);
+}
+
+/* ===== NAVBAR ===== */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+/* ===== PROGRESS ===== */
+function updateProgress(step) {
+  const pct = [(step - 1) / 3 * 100];
+  document.getElementById('progressLine').style.width = (step === 1 ? 0 : (step - 1) / 3 * 100) + '%';
+  for (let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('dot' + i);
+    const lbl = document.getElementById('lbl' + i);
+    dot.className = 'qs-dot' + (i === step ? ' active' : i < step ? ' done' : '');
+    lbl.className = 'qs-step-lbl' + (i === step ? ' active' : i < step ? ' done' : '');
+  }
+}
+
+function showCard(id) {
+  document.querySelectorAll('.qs-card').forEach(c => c.classList.remove('active'));
+  const card = document.getElementById(id);
+  if (card) card.classList.add('active');
+  const isForm = ['step1','step2','step3','step4'].includes(id);
+  document.getElementById('progressWrap').style.display = isForm ? '' : 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ===== OPTION CARDS ===== */
+function pickOption(el, field, value) {
+  const parent = el.parentElement;
+  parent.querySelectorAll('.qs-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  fd[field] = value;
+  const errEl = document.getElementById('err-' + field);
+  if (errEl) { errEl.classList.remove('show'); }
+}
+
+/* ===== TOGGLE SERVICES ===== */
+function toggleSvc(el, key) {
+  el.classList.toggle('selected');
+  fd[key] = el.classList.contains('selected');
+}
+
+/* ===== VALIDATION ===== */
+function validateStep(step) {
+  let ok = true;
+
+  function req(id, errId) {
+    const val = document.getElementById(id)?.value?.trim();
+    const err = document.getElementById(errId);
+    const inp = document.getElementById(id);
+    if (!val) { if (err) err.classList.add('show'); if (inp) inp.classList.add('invalid'); ok = false; }
+    else { if (err) err.classList.remove('show'); if (inp) inp.classList.remove('invalid'); }
+    return !!val;
+  }
+
+  function reqField(field, errId) {
+    const err = document.getElementById(errId);
+    if (!fd[field]) { if (err) err.classList.add('show'); ok = false; }
+    else { if (err) err.classList.remove('show'); }
+  }
+
+  if (step === 1) {
+    req('firstName', 'err-firstName'); req('lastName', 'err-lastName');
+    req('businessName', 'err-businessName');
+    const emailVal = document.getElementById('email')?.value?.trim();
+    const emailErr = document.getElementById('err-email');
+    const emailInp = document.getElementById('email');
+    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      emailErr?.classList.add('show'); emailInp?.classList.add('invalid'); ok = false;
+    } else { emailErr?.classList.remove('show'); emailInp?.classList.remove('invalid'); }
+  }
+  if (step === 2) {
+    reqField('entity', 'err-entity');
+    reqField('transactions', 'err-transactions');
+    reqField('revenue', 'err-revenue');
+  }
+  if (step === 3) {
+    reqField('booksStatus', 'err-booksStatus');
+  }
+  return ok;
+}
+
+/* ===== NAVIGATION ===== */
+function nextStep(from) {
+  if (!validateStep(from)) return;
+
+  // Collect inputs
+  if (from === 1) {
+    fd.firstName    = document.getElementById('firstName').value.trim();
+    fd.lastName     = document.getElementById('lastName').value.trim();
+    fd.businessName = document.getElementById('businessName').value.trim();
+    fd.email        = document.getElementById('email').value.trim();
+    fd.phone        = document.getElementById('phone').value.trim();
+  }
+  if (from === 2) {
+    fd.industry = document.getElementById('industry').value;
+  }
+
+  const next = from + 1;
+  currentStep = next;
+  updateProgress(next);
+
+  if (next === 4) {
+    const rec = computeRecommendation();
+    fd.selectedPlan = rec;
+    renderRecommendation(rec);
+  }
+
+  showCard('step' + next);
+}
+
+function prevStep(from) {
+  const prev = from - 1;
+  currentStep = prev;
+  updateProgress(prev);
+  showCard('step' + prev);
+}
+
+/* ===== RECOMMENDATION ALGORITHM ===== */
+function computeRecommendation() {
+  let score = 0;
+
+  const txMap = { lt50: 1, bt50_150: 2, bt150_300: 4, gt300: 6 };
+  score += txMap[fd.transactions] || 1;
+
+  const revMap = { lt10k: 0, bt10k_50k: 1, bt50k_200k: 2, gt200k: 3 };
+  score += revMap[fd.revenue] || 0;
+
+  if (fd.apManagement)  score += 1;
+  if (fd.arManagement)  score += 1;
+  if (fd.jobCosting)    score += 3;
+  if (fd.cashFlow)      score += 3;
+  if (fd.multiEntity)   score += 4;
+  if (fd.inventory)     score += 1;
+
+  if (score <= 3)  return 'accountant';
+  if (score <= 6)  return 'manager';
+  if (score <= 11) return 'controller';
+  return 'cfo';
+}
+
+/* ===== RENDER RECOMMENDATION ===== */
+function renderRecommendation(planId) {
+  const plan = PLANS[planId];
+  const isES = currentLang === 'es';
+
+  document.getElementById('recName').textContent  = isES ? plan.nameES  : plan.name;
+  document.getElementById('recPrice').textContent = isES ? plan.priceES : plan.price;
+  document.getElementById('recWhy').textContent   = isES ? plan.why.es  : plan.why.en;
+
+  // Mark selected in all-plans panel
+  document.querySelectorAll('.qs-plan-row').forEach(r => {
+    r.classList.toggle('selected', r.dataset.plan === planId);
+  });
+
+  // Add-ons
+  const addonsEl = document.getElementById('recAddons');
+  addonsEl.innerHTML = '';
+
+  if (fd.payroll) {
+    addonsEl.innerHTML += `
+      <div class="qs-addon">
+        <span class="qs-addon-icon">👥</span>
+        <div class="qs-addon-body">
+          <div class="qs-addon-title">${isES ? 'Gestión de Nómina' : 'Payroll Management'}</div>
+          <div class="qs-addon-desc">${isES ? 'Procesamiento de nómina para empleados y contratistas' : 'Payroll processing for employees and contractors'}</div>
+        </div>
+        <div class="qs-addon-price">${isES ? 'Precio a convenir' : 'Pricing on request'}</div>
+      </div>`;
+  }
+
+  if (fd.booksStatus && fd.booksStatus !== 'current') {
+    const catchupLabels = {
+      behind_1_3:  { en: '1–3 Month Catch-Up',  es: 'Actualización 1–3 Meses',  price: '$250' },
+      behind_3_6:  { en: '3–6 Month Catch-Up',  es: 'Actualización 3–6 Meses',  price: '$450' },
+      behind_6plus:{ en: '6+ Month Catch-Up',   es: 'Actualización 6+ Meses',   price: '$750+' }
+    };
+    const cu = catchupLabels[fd.booksStatus];
+    if (cu) {
+      addonsEl.innerHTML += `
+        <div class="qs-addon">
+          <span class="qs-addon-icon">📋</span>
+          <div class="qs-addon-body">
+            <div class="qs-addon-title">${isES ? cu.es : cu.en}</div>
+            <div class="qs-addon-desc">${isES ? 'Actualización de libros atrasados (servicio único)' : 'One-time clean-up of past books'}</div>
+          </div>
+          <div class="qs-addon-price">${cu.price}</div>
+        </div>`;
+    }
+  }
+}
+
+/* ===== CHANGE PLAN ===== */
+function toggleAllPlans() {
+  document.getElementById('allPlansPanel').classList.toggle('open');
+}
+
+function swapPlan(planId, el) {
+  fd.selectedPlan = planId;
+  renderRecommendation(planId);
+  document.getElementById('allPlansPanel').classList.remove('open');
+}
+
+/* ===== SUBMIT ===== */
+async function submitQuestionnaire() {
+  document.getElementById('submitBtn').disabled = true;
+  showCard('step-loading');
+
+  const payload = {
+    firstName:    fd.firstName,
+    lastName:     fd.lastName,
+    businessName: fd.businessName,
+    email:        fd.email,
+    phone:        fd.phone,
+    entity:       fd.entity,
+    industry:     fd.industry,
+    transactions: fd.transactions,
+    revenue:      fd.revenue,
+    services: {
+      apManagement: fd.apManagement,
+      arManagement: fd.arManagement,
+      jobCosting:   fd.jobCosting,
+      cashFlow:     fd.cashFlow,
+      payroll:      fd.payroll,
+      inventory:    fd.inventory,
+      multiEntity:  fd.multiEntity
+    },
+    booksStatus:  fd.booksStatus,
+    planId:       fd.selectedPlan,
+    lang:         currentLang
+  };
+
+  try {
+    const res = await fetch(CONFIG.workerUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error('API error ' + res.status);
+    const data = await res.json();
+
+    if (data.success && data.paymentUrl) {
+      window.location.href = data.paymentUrl;
+    } else {
+      throw new Error(data.error || 'No payment URL returned');
+    }
+  } catch (err) {
+    console.error('Submission error:', err);
+    showCard('step-error');
+  }
+}
+</script>
+</body>
+</html>

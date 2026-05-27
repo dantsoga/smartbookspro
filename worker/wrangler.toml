@@ -1,0 +1,24 @@
+# SmartBooks Pro — Cloudflare Worker config
+# Docs: https://developers.cloudflare.com/workers/configuration/
+
+name            = "smartbooks-pro-api"
+main            = "worker.js"
+compatibility_date = "2025-01-01"
+
+# ── Public env vars ────────────────────────────────────────────────────────────
+# Change ALLOWED_ORIGIN to your live domain once the site is hosted.
+[vars]
+ALLOWED_ORIGIN  = "*"
+ONBOARDING_URL  = "https://sbpus.com/onboarding.html"
+
+# ── Secrets — set these via the CLI, never put real values here ─────────────────
+# Run each command once, then deploy:
+#
+#   npx wrangler secret put QB_CLIENT_ID
+#   npx wrangler secret put QB_CLIENT_SECRET
+#   npx wrangler secret put QB_REFRESH_TOKEN
+#   npx wrangler secret put QB_REALM_ID
+#
+# You can find QB_REALM_ID in your QBO URL:
+#   https://app.qbo.intuit.com/app/homepage?deeplinkcompanyid=XXXXXXXXXX
+#                                                               ^^^^^^^^^^
