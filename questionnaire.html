@@ -77,7 +77,7 @@
     }
     .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 12px; }
     .nav-logo-icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .nav-logo-icon svg { display: block; width: 100%; height: 100%; }
+    .nav-logo-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
     .nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
     .logo-name { font-size: 1.2rem; font-weight: 800; color: var(--white); letter-spacing: -0.3px; line-height: 1.2; }
     .logo-tag { font-size: 0.66rem; color: var(--gold); font-weight: 500; letter-spacing: 0.3px; }
@@ -324,13 +324,7 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo">
         <div class="nav-logo-icon">
-          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="0" y="0" width="64" height="64" rx="16" fill="#FFFFFF"/>
-            <rect x="14" y="36" width="7" height="14" rx="2" fill="#1B2A4A"/>
-            <rect x="25.5" y="28" width="7" height="22" rx="2" fill="#1B2A4A"/>
-            <rect x="37" y="18" width="7" height="32" rx="2" fill="#C9A84C"/>
-            <circle cx="40.5" cy="14" r="2.5" fill="#C9A84C"/>
-          </svg>
+          <img src="sbplogo.png" alt="SmartBooks Pro" style="width:100%;height:100%;object-fit:contain;">
         </div>
         <div class="nav-logo-text">
           <span class="logo-name">SmartBooks Pro</span>
@@ -601,6 +595,15 @@
           </div>
           <div class="qs-toggle-check">✓</div>
         </div>
+
+        <div class="qs-toggle" onclick="toggleSvc(this,'salesTax')">
+          <span class="qs-toggle-icon">🧾</span>
+          <div class="qs-toggle-body">
+            <div class="qs-toggle-title" data-en="State &amp; Local Sales Tax Preparation" data-es="Preparación de Impuestos sobre Ventas Estatales y Locales">State &amp; Local Sales Tax Preparation</div>
+            <div class="qs-toggle-desc" data-en="Calculation, filing support, and reporting for state and local sales tax obligations" data-es="Cálculo, apoyo en presentación e informes para obligaciones de impuestos sobre ventas estatales y locales">Calculation, filing support, and reporting for state and local sales tax obligations</div>
+          </div>
+          <div class="qs-toggle-check">✓</div>
+        </div>
       </div>
 
       <hr class="qs-divider">
@@ -783,7 +786,7 @@ const fd = {
   firstName: '', lastName: '', businessName: '', email: '', phone: '',
   entity: '', industry: '', transactions: '', revenue: '',
   apManagement: false, arManagement: false, jobCosting: false,
-  cashFlow: false, payroll: false, inventory: false, multiEntity: false,
+  cashFlow: false, payroll: false, inventory: false, multiEntity: false, salesTax: false,
   booksStatus: '', selectedPlan: ''
 };
 let currentStep = 1;
@@ -951,6 +954,7 @@ function computeRecommendation() {
   if (fd.jobCosting)    score += 3;
   if (fd.cashFlow)      score += 3;
   if (fd.multiEntity)   score += 4;
+  if (fd.salesTax)      score += 3;
   if (fd.inventory)     score += 1;
 
   if (score <= 3)  return 'accountant';
@@ -1043,7 +1047,8 @@ async function submitQuestionnaire() {
       cashFlow:     fd.cashFlow,
       payroll:      fd.payroll,
       inventory:    fd.inventory,
-      multiEntity:  fd.multiEntity
+      multiEntity:  fd.multiEntity,
+      salesTax:     fd.salesTax
     },
     booksStatus:  fd.booksStatus,
     planId:       fd.selectedPlan,

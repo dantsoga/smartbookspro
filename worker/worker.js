@@ -11,7 +11,7 @@
  *   QB_REALM_ID        — Your QBO company ID (14-digit number)
  *
  * Required vars in wrangler.toml:
- *   ALLOWED_ORIGIN     — e.g. "https://sbpus.com" (or "*" for testing)
+ *   ALLOWED_ORIGIN     — e.g. "https://smartbooksprous.com" (or "*" for testing)
  *   ONBOARDING_URL     — URL to redirect clients after payment
  */
 

@@ -84,7 +84,7 @@ Replace `YOUR_SUBDOMAIN` with the subdomain from Step 4.
 In QBO:
 1. Go to **Settings → Account and Settings → Payments**
 2. Under **Payment confirmation**, set the redirect URL to:
-   `https://sbpus.com/onboarding.html`
+   `https://smartbooksprous.com/onboarding.html`
 
 This sends customers to the onboarding page after they pay.
 

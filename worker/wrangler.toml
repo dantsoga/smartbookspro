@@ -9,7 +9,7 @@ compatibility_date = "2025-01-01"
 # Change ALLOWED_ORIGIN to your live domain once the site is hosted.
 [vars]
 ALLOWED_ORIGIN  = "*"
-ONBOARDING_URL  = "https://sbpus.com/onboarding.html"
+ONBOARDING_URL  = "https://smartbooksprous.com/onboarding.html"
 
 # ── Secrets — set these via the CLI, never put real values here ─────────────────
 # Run each command once, then deploy:
