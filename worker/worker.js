@@ -137,10 +137,6 @@ function buildLineItems(planId, services = {}, booksStatus) {
   const plan = PLANS[planId];
   items.push({ name: plan.label, amount: plan.price });
 
-  if (services.payroll) {
-    items.push({ name: 'Payroll Management Add-on', amount: 0 });
-  }
-
   const catchup = CATCHUP[booksStatus];
   if (catchup) {
     items.push({ name: catchup.label, amount: catchup.price });
