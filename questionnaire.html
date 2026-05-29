@@ -381,7 +381,7 @@
       <div class="qs-card-header">
         <div class="qs-step-tag" data-en="Step 1 of 4" data-es="Paso 1 de 4">Step 1 of 4</div>
         <h2 class="qs-card-title" data-en="Let's Start With You" data-es="Empecemos Contigo">Let's Start With You</h2>
-        <p class="qs-card-sub" data-en="We'll use this to set up your QuickBooks account and send your invoice." data-es="Usaremos esto para configurar tu cuenta de QuickBooks y enviarte tu factura.">We'll use this to set up your QuickBooks account and send your invoice.</p>
+        <p class="qs-card-sub" data-en="We'll use this to set up your QuickBooks account and send your payment link." data-es="Usaremos esto para configurar tu cuenta de QuickBooks y enviarte tu enlace de pago.">We'll use this to set up your QuickBooks account and send your payment link.</p>
       </div>
 
       <div class="qs-row">
@@ -678,22 +678,22 @@
 
       <div class="qs-nav" style="margin-top:24px;">
         <button class="qs-back" onclick="prevStep(4)" data-en="← Back" data-es="← Atrás">← Back</button>
-        <button class="btn btn-gold qs-next" onclick="submitQuestionnaire()" id="submitBtn" data-en="Create My Invoice →" data-es="Crear Mi Factura →">Create My Invoice →</button>
+        <button class="btn btn-gold qs-next" onclick="submitQuestionnaire()" id="submitBtn" data-en="Proceed to Payment →" data-es="Proceder al Pago →">Proceed to Payment →</button>
       </div>
     </div>
 
     <!-- ========== LOADING ========== -->
     <div class="qs-card" id="step-loading">
       <div class="qs-spinner"></div>
-      <h3 class="qs-loading-h" data-en="Setting Up Your Account…" data-es="Configurando Tu Cuenta…">Setting Up Your Account…</h3>
-      <p class="qs-loading-p" data-en="We're creating your QuickBooks profile and generating your invoice. This takes just a moment." data-es="Estamos creando tu perfil de QuickBooks y generando tu factura. Solo tomará un momento.">We're creating your QuickBooks profile and generating your invoice. This takes just a moment.</p>
+      <h3 class="qs-loading-h" data-en="Preparing Your Payment…" data-es="Preparando Tu Pago…">Preparing Your Payment…</h3>
+      <p class="qs-loading-p" data-en="We're setting up your customer profile and payment link. This takes just a moment." data-es="Estamos configurando tu perfil de cliente y enlace de pago. Solo tomará un momento.">We're setting up your customer profile and payment link. This takes just a moment.</p>
     </div>
 
     <!-- ========== ERROR ========== -->
     <div class="qs-card" id="step-error">
       <div class="qs-error-icon">⚠️</div>
       <h3 class="qs-error-h" data-en="Something Went Wrong" data-es="Algo Salió Mal">Something Went Wrong</h3>
-      <p class="qs-error-p" data-en="We couldn't generate your invoice automatically. Please reach out directly and we'll set everything up for you right away." data-es="No pudimos generar tu factura automáticamente. Contáctanos directamente y lo configuraremos todo de inmediato.">We couldn't generate your invoice automatically. Please reach out directly and we'll set everything up for you right away.</p>
+      <p class="qs-error-p" data-en="We couldn't generate your payment link automatically. Please reach out directly and we'll set everything up for you right away." data-es="No pudimos generar tu enlace de pago automáticamente. Contáctanos directamente y lo configuraremos todo de inmediato.">We couldn't generate your payment link automatically. Please reach out directly and we'll set everything up for you right away.</p>
       <a href="mailto:smartbooksprollc@gmail.com" class="btn btn-gold" style="margin:0 auto 12px; display:inline-flex;">smartbooksprollc@gmail.com</a><br>
       <a href="https://wa.me/13054957636" class="btn btn-outline-navy" target="_blank" rel="noopener" style="margin: 0 auto; display:inline-flex;" data-en="Message on WhatsApp" data-es="Escribir por WhatsApp">Message on WhatsApp</a>
     </div>
@@ -724,7 +724,7 @@
    Cloudflare Worker (see worker/wrangler.toml for setup)
    ========================================================== */
 const CONFIG = {
-  workerUrl: 'https://smartbooks-pro-api.YOUR_SUBDOMAIN.workers.dev/api/create-client',
+  workerUrl: 'https://api.smartbooksprous.com/api/create-client',
   fallbackEmail: 'smartbooksprollc@gmail.com',
   onboardingUrl: 'onboarding.html'
 };
