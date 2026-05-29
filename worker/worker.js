@@ -1,35 +1,32 @@
 /**
- * SmartBooks Pro — Cloudflare Worker
+ * SmartBooks Pro — Cloudflare Worker (Stripe Checkout)
  *
- * Receives questionnaire submissions, creates a QuickBooks customer
- * and invoice, then returns the QB payment link.
+ * Receives questionnaire submissions, creates a Stripe Checkout Session,
+ * and returns the hosted checkout URL.
  *
- * Required secrets (set via: wrangler secret put <NAME>):
- *   QB_CLIENT_ID       — Intuit app Client ID
- *   QB_CLIENT_SECRET   — Intuit app Client Secret
- *   QB_REFRESH_TOKEN   — Long-lived OAuth 2.0 refresh token
- *   QB_REALM_ID        — Your QBO company ID (14-digit number)
+ * Required secret (set via: wrangler secret put STRIPE_SECRET_KEY):
+ *   STRIPE_SECRET_KEY  — Stripe secret key (sk_live_...)
  *
  * Required vars in wrangler.toml:
- *   ALLOWED_ORIGIN     — e.g. "https://smartbooksprous.com" (or "*" for testing)
- *   ONBOARDING_URL     — URL to redirect clients after payment
+ *   ALLOWED_ORIGIN   — e.g. "https://smartbooksprous.com"
+ *   ONBOARDING_URL   — URL to redirect clients after payment
+ *   SITE_URL         — Base URL of the site (for cancel redirect)
  */
 
-const QB_TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer';
-const QB_API       = (realmId) => `https://quickbooks.api.intuit.com/v3/company/${realmId}`;
+const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
 
 /* ── Plan definitions ─────────────────────────────────────── */
 const PLANS = {
-  accountant: { label: 'Accountant Plan — Monthly Bookkeeping',           price: 350  },
-  manager:    { label: 'Accounting Manager Plan — Monthly Bookkeeping',    price: 700  },
-  controller: { label: 'Controller Plan — Monthly Bookkeeping',            price: 1400 },
-  cfo:        { label: 'CFO Advisory Plan — Monthly Bookkeeping',          price: 2500 }
+  accountant: { label: 'Accountant Plan — Monthly Bookkeeping',           price: 35000  },
+  manager:    { label: 'Accounting Manager Plan — Monthly Bookkeeping',    price: 70000  },
+  controller: { label: 'Controller Plan — Monthly Bookkeeping',            price: 140000 },
+  cfo:        { label: 'CFO Advisory Plan — Monthly Bookkeeping',          price: 250000 }
 };
 
 const CATCHUP = {
-  behind_1_3:  { label: 'Books Catch-Up Service (1–3 months)',  price: 250 },
-  behind_3_6:  { label: 'Books Catch-Up Service (3–6 months)',  price: 450 },
-  behind_6plus:{ label: 'Books Catch-Up Service (6+ months)',   price: 750 }
+  behind_1_3:  { label: 'Books Catch-Up Service (1–3 months)',  price: 25000 },
+  behind_3_6:  { label: 'Books Catch-Up Service (3–6 months)',  price: 45000 },
+  behind_6plus:{ label: 'Books Catch-Up Service (6+ months)',   price: 75000 }
 };
 
 /* ── Entry point ─────────────────────────────────────────── */
@@ -70,34 +67,60 @@ async function handleCreateClient(request, env) {
   }
 
   try {
-    /* 1. Get fresh QB access token */
-    const token = await refreshQBToken(env);
+    /* 1. Build line items */
+    const lineItems = buildLineItems(planId, services, booksStatus);
 
-    /* 2. Create QB customer */
-    const customer = await createCustomer(
-      { firstName, lastName, businessName, email, phone, entity, industry },
-      token, env.QB_REALM_ID
+    /* 2. Build customer metadata */
+    const metadata = {
+      firstName:    firstName    || '',
+      lastName:     lastName     || '',
+      businessName: businessName || '',
+      email:        email,
+      phone:        phone        || '',
+      entity:       entity       || '',
+      industry:     industry     || '',
+      planId:       planId
+    };
+
+    /* 3. Create Stripe Checkout Session */
+    const params = new URLSearchParams();
+    params.append('mode', 'payment');
+    params.append('success_url',
+      env.ONBOARDING_URL
+        ? `${env.ONBOARDING_URL}?name=${encodeURIComponent(firstName || '')}`
+        : `${env.SITE_URL}/onboarding.html?name=${encodeURIComponent(firstName || '')}`
     );
+    params.append('cancel_url', `${env.SITE_URL}/questionnaire.html`);
 
-    /* 3. Build invoice line items */
-    const lines = buildLines(planId, services, booksStatus);
+    lineItems.forEach((item, i) => {
+      params.append(`line_items[${i}][price_data][currency]`,                  'usd');
+      params.append(`line_items[${i}][price_data][product_data][name]`,        item.name);
+      params.append(`line_items[${i}][price_data][unit_amount]`,               String(item.amount));
+      params.append(`line_items[${i}][quantity]`,                              '1');
+    });
 
-    /* 4. Create invoice */
-    const invoice = await createInvoice(customer.Id, email, lines, token, env.QB_REALM_ID);
+    params.append('customer_email', email);
+    Object.entries(metadata).forEach(([k, v]) => {
+      params.append(`metadata[${k}]`, v);
+    });
 
-    /* 5. Read invoice back to get the public payment URL */
-    const invoiceRead = await readInvoice(invoice.Id, token, env.QB_REALM_ID);
+    const stripeRes = await fetch(STRIPE_API, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.STRIPE_SECRET_KEY}`,
+        'Content-Type':  'application/x-www-form-urlencoded'
+      },
+      body: params.toString()
+    });
 
-    /* 6. Use InvoiceLink from QBO if available, fall back to internal URL */
-    const paymentUrl = invoiceRead.InvoiceLink ||
-      `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
+    const session = await stripeRes.json();
 
-    const onboardingUrl = env.ONBOARDING_URL
-      ? `${env.ONBOARDING_URL}?name=${encodeURIComponent(firstName || '')}`
-      : `onboarding.html?name=${encodeURIComponent(firstName || '')}`;
+    if (!session.url) {
+      throw new Error('Stripe session creation failed: ' + JSON.stringify(session));
+    }
 
     return Response.json(
-      { success: true, paymentUrl, onboardingUrl, invoiceId: invoice.Id },
+      { success: true, paymentUrl: session.url, sessionId: session.id },
       { headers: cors(env) }
     );
 
@@ -107,131 +130,26 @@ async function handleCreateClient(request, env) {
   }
 }
 
-/* ── QB OAuth ────────────────────────────────────────────── */
-async function refreshQBToken(env) {
-  const creds = btoa(`${env.QB_CLIENT_ID}:${env.QB_CLIENT_SECRET}`);
-  const res = await fetch(QB_TOKEN_URL, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Basic ${creds}`,
-      'Content-Type':  'application/x-www-form-urlencoded',
-      'Accept':        'application/json'
-    },
-    body: `grant_type=refresh_token&refresh_token=${encodeURIComponent(env.QB_REFRESH_TOKEN)}`
-  });
-  const data = await res.json();
-  if (!data.access_token) {
-    throw new Error('QB token refresh failed: ' + JSON.stringify(data));
-  }
-  return data.access_token;
-}
-
-/* ── QB Customer ─────────────────────────────────────────── */
-async function createCustomer(info, token, realmId) {
-  const displayName = info.businessName || `${info.firstName} ${info.lastName}`;
-
-  const payload = {
-    GivenName:        info.firstName  || '',
-    FamilyName:       info.lastName   || '',
-    DisplayName:      displayName,
-    CompanyName:      info.businessName || '',
-    PrimaryEmailAddr: { Address: info.email },
-    ...(info.phone ? { PrimaryPhone: { FreeFormNumber: info.phone } } : {}),
-    Notes: [
-      info.entity   ? `Entity: ${info.entity}`     : '',
-      info.industry ? `Industry: ${info.industry}`  : ''
-    ].filter(Boolean).join(' | ')
-  };
-
-  const res = await fetch(`${QB_API(realmId)}/customer`, {
-    method: 'POST',
-    headers: qbHeaders(token),
-    body: JSON.stringify(payload)
-  });
-  const data = await res.json();
-  if (!data.Customer) {
-    throw new Error('QB customer creation failed: ' + JSON.stringify(data));
-  }
-  return data.Customer;
-}
-
-/* ── QB Invoice lines ────────────────────────────────────── */
-function buildLines(planId, services = {}, booksStatus) {
-  const lines = [];
+/* ── Line items ──────────────────────────────────────────── */
+function buildLineItems(planId, services = {}, booksStatus) {
+  const items = [];
 
   const plan = PLANS[planId];
-  lines.push(makeLine(plan.label, plan.price));
+  items.push({ name: plan.label, amount: plan.price });
 
   if (services.payroll) {
-    lines.push(makeLine('Payroll Management Add-on', 0, 'Pricing to be confirmed — our team will contact you.'));
+    items.push({ name: 'Payroll Management Add-on', amount: 0 });
   }
 
   const catchup = CATCHUP[booksStatus];
   if (catchup) {
-    lines.push(makeLine(catchup.label, catchup.price));
+    items.push({ name: catchup.label, amount: catchup.price });
   }
 
-  return lines;
-}
-
-function makeLine(description, amount, note) {
-  return {
-    DetailType: 'SalesItemLineDetail',
-    Amount: amount,
-    Description: note ? `${description}\n${note}` : description,
-    SalesItemLineDetail: {
-      UnitPrice: amount,
-      Qty: 1
-    }
-  };
-}
-
-/* ── QB Invoice ──────────────────────────────────────────── */
-async function createInvoice(customerId, email, lines, token, realmId) {
-  const payload = {
-    CustomerRef:  { value: customerId },
-    BillEmail:    { Address: email },
-    EmailStatus:  'NotSet',
-    Line:         lines
-  };
-
-  const res = await fetch(`${QB_API(realmId)}/invoice`, {
-    method: 'POST',
-    headers: qbHeaders(token),
-    body: JSON.stringify(payload)
-  });
-  const data = await res.json();
-  if (!data.Invoice) {
-    throw new Error('QB invoice creation failed: ' + JSON.stringify(data));
-  }
-  return data.Invoice;
-}
-
-async function sendInvoice(invoiceId, email, token, realmId) {
-  await fetch(
-    `${QB_API(realmId)}/invoice/${invoiceId}/send?sendTo=${encodeURIComponent(email)}`,
-    { method: 'POST', headers: { ...qbHeaders(token), 'Content-Type': 'application/octet-stream' } }
-  );
-}
-
-async function readInvoice(invoiceId, token, realmId) {
-  const res = await fetch(
-    `${QB_API(realmId)}/invoice/${invoiceId}`,
-    { method: 'GET', headers: qbHeaders(token) }
-  );
-  const data = await res.json();
-  return data.Invoice;
+  return items;
 }
 
 /* ── Helpers ─────────────────────────────────────────────── */
-function qbHeaders(token) {
-  return {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type':  'application/json',
-    'Accept':        'application/json'
-  };
-}
-
 function cors(env) {
   return {
     'Access-Control-Allow-Origin':  env.ALLOWED_ORIGIN || '*',

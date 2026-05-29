@@ -6,19 +6,18 @@ main            = "worker.js"
 compatibility_date = "2025-01-01"
 
 # ── Public env vars ────────────────────────────────────────────────────────────
-# Change ALLOWED_ORIGIN to your live domain once the site is hosted.
 [vars]
 ALLOWED_ORIGIN  = "*"
 ONBOARDING_URL  = "https://smartbooksprous.com/onboarding.html"
+SITE_URL        = "https://smartbooksprous.com"
 
 # ── Secrets — set these via the CLI, never put real values here ─────────────────
-# Run each command once, then deploy:
-#
-#   npx wrangler secret put QB_CLIENT_ID
-#   npx wrangler secret put QB_CLIENT_SECRET
-#   npx wrangler secret put QB_REFRESH_TOKEN
-#   npx wrangler secret put QB_REALM_ID
-#
-# You can find QB_REALM_ID in your QBO URL:
-#   https://app.qbo.intuit.com/app/homepage?deeplinkcompanyid=XXXXXXXXXX
-#                                                               ^^^^^^^^^^
+# Run once, then deploy:
+
+# 1. Set the Stripe secret
+# cd "c:\Users\Projects\Desktop\Projects\SmartBooks Pro\worker"
+# npx wrangler secret put STRIPE_SECRET_KEY
+# paste your sk_test_... key when prompted
+
+# 2. Deploy
+# npx wrangler deploy
