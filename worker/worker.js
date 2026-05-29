@@ -97,8 +97,7 @@ async function handleCreateClient(request, env) {
       : `onboarding.html?name=${encodeURIComponent(firstName || '')}`;
 
     return Response.json(
-      { success: true, paymentUrl, onboardingUrl, invoiceId: invoice.Id,
-        _debug_invoice_fields: Object.keys(invoiceRead) },
+      { success: true, paymentUrl, onboardingUrl, invoiceId: invoice.Id },
       { headers: cors(env) }
     );
 
