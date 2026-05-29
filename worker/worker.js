@@ -88,16 +88,17 @@ async function handleCreateClient(request, env) {
     /* 5. Read invoice back to get the public payment URL */
     const invoiceRead = await readInvoice(invoice.Id, token, env.QB_REALM_ID);
 
-    const paymentUrl = invoiceRead.InvoiceLink || invoiceRead.domain === 'QBO'
-      ? `https://invoice.qbo.intuit.com/invoice/${invoice.Id}`
-      : `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
+    /* 6. Use InvoiceLink from QBO if available, fall back to internal URL */
+    const paymentUrl = invoiceRead.InvoiceLink ||
+      `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
 
     const onboardingUrl = env.ONBOARDING_URL
       ? `${env.ONBOARDING_URL}?name=${encodeURIComponent(firstName || '')}`
       : `onboarding.html?name=${encodeURIComponent(firstName || '')}`;
 
     return Response.json(
-      { success: true, paymentUrl, onboardingUrl, invoiceId: invoice.Id },
+      { success: true, paymentUrl, onboardingUrl, invoiceId: invoice.Id,
+        _debug_invoice_fields: Object.keys(invoiceRead) },
       { headers: cors(env) }
     );
 
