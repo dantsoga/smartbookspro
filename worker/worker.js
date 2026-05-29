@@ -85,8 +85,13 @@ async function handleCreateClient(request, env) {
     /* 4. Create invoice */
     const invoice = await createInvoice(customer.Id, email, lines, token, env.QB_REALM_ID);
 
-    /* 5. Build payment & onboarding URLs */
-    const paymentUrl   = `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
+    /* 5. Read invoice back to get the public payment URL */
+    const invoiceRead = await readInvoice(invoice.Id, token, env.QB_REALM_ID);
+
+    const paymentUrl = invoiceRead.InvoiceLink || invoiceRead.domain === 'QBO'
+      ? `https://invoice.qbo.intuit.com/invoice/${invoice.Id}`
+      : `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
+
     const onboardingUrl = env.ONBOARDING_URL
       ? `${env.ONBOARDING_URL}?name=${encodeURIComponent(firstName || '')}`
       : `onboarding.html?name=${encodeURIComponent(firstName || '')}`;
@@ -207,6 +212,15 @@ async function sendInvoice(invoiceId, email, token, realmId) {
     `${QB_API(realmId)}/invoice/${invoiceId}/send?sendTo=${encodeURIComponent(email)}`,
     { method: 'POST', headers: { ...qbHeaders(token), 'Content-Type': 'application/octet-stream' } }
   );
+}
+
+async function readInvoice(invoiceId, token, realmId) {
+  const res = await fetch(
+    `${QB_API(realmId)}/invoice/${invoiceId}`,
+    { method: 'GET', headers: qbHeaders(token) }
+  );
+  const data = await res.json();
+  return data.Invoice;
 }
 
 /* ── Helpers ─────────────────────────────────────────────── */
