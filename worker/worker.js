@@ -85,10 +85,7 @@ async function handleCreateClient(request, env) {
     /* 4. Create invoice */
     const invoice = await createInvoice(customer.Id, email, lines, token, env.QB_REALM_ID);
 
-    /* 5. Send invoice email (triggers QB "Pay Now" button) */
-    await sendInvoice(invoice.Id, email, token, env.QB_REALM_ID);
-
-    /* 6. Build payment & onboarding URLs */
+    /* 5. Build payment & onboarding URLs */
     const paymentUrl   = `https://app.qbo.intuit.com/app/invoice?txnId=${invoice.Id}`;
     const onboardingUrl = env.ONBOARDING_URL
       ? `${env.ONBOARDING_URL}?name=${encodeURIComponent(firstName || '')}`
@@ -189,7 +186,7 @@ async function createInvoice(customerId, email, lines, token, realmId) {
   const payload = {
     CustomerRef:  { value: customerId },
     BillEmail:    { Address: email },
-    EmailStatus:  'NeedToSend',
+    EmailStatus:  'NotSet',
     Line:         lines
   };
 
