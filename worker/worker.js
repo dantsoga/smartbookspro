@@ -17,16 +17,16 @@ const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
 
 /* ── Plan definitions ─────────────────────────────────────── */
 const PLANS = {
-  accountant: { label: 'Accountant Plan — Monthly Bookkeeping',           price: 35000  },
-  manager:    { label: 'Accounting Manager Plan — Monthly Bookkeeping',    price: 70000  },
-  controller: { label: 'Controller Plan — Monthly Bookkeeping',            price: 140000 },
-  cfo:        { label: 'CFO Advisory Plan — Monthly Bookkeeping',          price: 250000 }
+  accountant:  { priceId: 'price_1TepRD2NubnCGyyy40r4tPN9', label: 'Accountant Plan — Monthly Bookkeeping'        },
+  manager:     { priceId: 'price_1TepRS2NubnCGyyywynwS94T', label: 'Accounting Manager Plan — Monthly Bookkeeping' },
+  controller:  { priceId: 'price_1TepRX2NubnCGyyyEkSRyYbA', label: 'Controller Plan — Monthly Bookkeeping'        },
+  cfo:         { priceId: 'price_1TepRn2NubnCGyyygsNP3qoZ', label: 'CFO Advisory Plan — Monthly Bookkeeping'      }
 };
 
 const CATCHUP = {
-  behind_1_3:  { label: 'Books Catch-Up Service (1–3 months)',  price: 25000 },
-  behind_3_6:  { label: 'Books Catch-Up Service (3–6 months)',  price: 45000 },
-  behind_6plus:{ label: 'Books Catch-Up Service (6+ months)',   price: 75000 }
+  behind_1_3:   { priceId: 'price_1TepS52NubnCGyyyByStDHsM', label: 'Books Catch-Up Service (1–3 months)'  },
+  behind_3_6:   { priceId: 'price_1TepS82NubnCGyyynPe0S90Q', label: 'Books Catch-Up Service (3–6 months)'  },
+  behind_6plus: { priceId: 'price_1TepS82NubnCGyyyQPozw48P', label: 'Books Catch-Up Service (6+ months)'   }
 };
 
 /* ── Entry point ─────────────────────────────────────────── */
@@ -93,10 +93,8 @@ async function handleCreateClient(request, env) {
     params.append('cancel_url', `${env.SITE_URL}/questionnaire.html`);
 
     lineItems.forEach((item, i) => {
-      params.append(`line_items[${i}][price_data][currency]`,                  'usd');
-      params.append(`line_items[${i}][price_data][product_data][name]`,        item.name);
-      params.append(`line_items[${i}][price_data][unit_amount]`,               String(item.amount));
-      params.append(`line_items[${i}][quantity]`,                              '1');
+      params.append(`line_items[${i}][price]`,    item.priceId);
+      params.append(`line_items[${i}][quantity]`, '1');
     });
 
     params.append('customer_email', email);
@@ -135,11 +133,11 @@ function buildLineItems(planId, services = {}, booksStatus) {
   const items = [];
 
   const plan = PLANS[planId];
-  items.push({ name: plan.label, amount: plan.price });
+  items.push({ priceId: plan.priceId, name: plan.label });
 
   const catchup = CATCHUP[booksStatus];
   if (catchup) {
-    items.push({ name: catchup.label, amount: catchup.price });
+    items.push({ priceId: catchup.priceId, name: catchup.label });
   }
 
   return items;
