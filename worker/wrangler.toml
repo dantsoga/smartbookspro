@@ -19,5 +19,10 @@ SITE_URL        = "https://smartbooksprous.com"
 # npx wrangler secret put STRIPE_SECRET_KEY
 # paste your sk_test_... key when prompted
 
+# 1b. Set the WhatsApp reply auth secret (shared with the CS agent "Alex")
+# npx wrangler secret put WA_REPLY_SECRET
+#
+# (WHATSAPP_ACCESS_TOKEN is already set in Cloudflare — no action needed)
+
 # 2. Deploy
 # npx wrangler deploy

@@ -4,8 +4,10 @@
  * Receives questionnaire submissions, creates a Stripe Checkout Session,
  * and returns the hosted checkout URL.
  *
- * Required secret (set via: wrangler secret put STRIPE_SECRET_KEY):
- *   STRIPE_SECRET_KEY  — Stripe secret key (sk_live_...)
+ * Required secrets (set via: wrangler secret put <NAME>):
+ *   STRIPE_SECRET_KEY      — Stripe secret key (sk_live_...)
+ *   WHATSAPP_ACCESS_TOKEN  — Meta Graph API access token for the WA Business number
+ *   WA_REPLY_SECRET        — Shared secret the CS agent (Alex) must send to use /api/wa-reply
  *
  * Required vars in wrangler.toml:
  *   ALLOWED_ORIGIN   — e.g. "https://smartbooksprous.com"
@@ -14,6 +16,9 @@
  */
 
 const STRIPE_API = 'https://api.stripe.com/v1/checkout/sessions';
+
+const WA_PHONE_NUMBER_ID = '1163868386807701';
+const WA_GRAPH_API = `https://graph.facebook.com/v25.0/${WA_PHONE_NUMBER_ID}/messages`;
 
 /* ── Plan definitions ─────────────────────────────────────── */
 const PLANS = {
@@ -40,6 +45,10 @@ export default {
 
     if (url.pathname === '/api/create-client' && request.method === 'POST') {
       return handleCreateClient(request, env);
+    }
+
+    if (url.pathname === '/api/wa-reply' && request.method === 'POST') {
+      return handleWaReply(request, env);
     }
 
     if (url.pathname === '/health') {
@@ -124,6 +133,50 @@ async function handleCreateClient(request, env) {
 
   } catch (err) {
     console.error('handleCreateClient error:', err);
+    return errorResp(err.message, 500, env);
+  }
+}
+
+/* ── WhatsApp reply (CS agent → customer) ─────────────────── */
+async function handleWaReply(request, env) {
+  if (request.headers.get('X-Worker-Secret') !== env.WA_REPLY_SECRET) {
+    return errorResp('Unauthorized', 401, env);
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return errorResp('Invalid JSON body', 400, env);
+  }
+
+  const { to, message } = body;
+
+  if (!to || !message) {
+    return errorResp('Missing required fields: to, message', 400, env);
+  }
+
+  try {
+    const graphRes = await fetch(WA_GRAPH_API, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.WHATSAPP_ACCESS_TOKEN}`,
+        'Content-Type':  'application/json'
+      },
+      body: JSON.stringify({
+        messaging_product: 'whatsapp',
+        to: to,
+        type: 'text',
+        text: { body: message }
+      })
+    });
+
+    const data = await graphRes.json();
+
+    return Response.json(data, { status: graphRes.status, headers: cors(env) });
+
+  } catch (err) {
+    console.error('handleWaReply error:', err);
     return errorResp(err.message, 500, env);
   }
 }
