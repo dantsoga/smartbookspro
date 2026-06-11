@@ -4,6 +4,13 @@
 name            = "smartbooks-pro-api"
 main            = "worker.js"
 compatibility_date = "2025-01-01"
+workers_dev     = false
+preview_urls    = false
+
+routes = [
+  { pattern = "smartbooksprous.com/api/*",  zone_name = "smartbooksprous.com" },
+  { pattern = "api.smartbooksprous.com/*",  zone_name = "smartbooksprous.com" }
+]
 
 # ── Public env vars ────────────────────────────────────────────────────────────
 [vars]
@@ -11,9 +18,8 @@ ALLOWED_ORIGIN  = "https://smartbooksprous.com"
 ONBOARDING_URL  = "https://smartbooksprous.com/onboarding.html"
 SITE_URL        = "https://smartbooksprous.com"
 CONTACT_EMAIL   = "contact@smartbooksprous.com"
-# Sender for contact-form emails. "onboarding@resend.dev" works out of the box;
-# switch to your own verified domain in Resend for better deliverability:
-CONTACT_FROM    = "SmartBooks Pro <onboarding@resend.dev>"
+# Sender for contact-form emails (domain verified in Resend):
+CONTACT_FROM    = "SmartBooks Pro <contact@smartbooksprous.com>"
 
 # ── Secrets — set these via the CLI, never put real values here ─────────────────
 # Run once, then deploy:
