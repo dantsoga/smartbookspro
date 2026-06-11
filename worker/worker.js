@@ -188,7 +188,7 @@ async function handleContact(request, env) {
       },
       body: JSON.stringify({
         from:     env.CONTACT_FROM  || 'SmartBooks Pro <onboarding@resend.dev>',
-        to:       [env.CONTACT_EMAIL || 'smartbooksprollc@gmail.com'],
+        to:       [env.CONTACT_EMAIL || 'contact@smartbooksprous.com'],
         reply_to: email,
         subject:  `New lead: ${name}${bizType ? ` (${bizType})` : ''}`,
         text

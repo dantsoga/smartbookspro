@@ -60,6 +60,6 @@ Each `.pricing-card` follows: plan name → `.pricing-tagline` (italic) → pric
 
 ## Content ownership
 
-- Email: `dtsou.consulting@gmail.com`
+- Email: `contact@smartbooksprous.com` (business inbox, shown on all pages; owner's personal email is `dtsou.consulting@gmail.com`)
 - LinkedIn: `https://www.linkedin.com/in/daniel-tsou-73465b46`
 - Logo: `sbplogo.png` — replaces the original `logo.svg`; referenced via `<img src="sbplogo.png">` in navbar, hero, and footer of all pages.
