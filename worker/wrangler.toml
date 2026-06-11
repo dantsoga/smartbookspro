@@ -7,9 +7,13 @@ compatibility_date = "2025-01-01"
 
 # ── Public env vars ────────────────────────────────────────────────────────────
 [vars]
-ALLOWED_ORIGIN  = "*"
+ALLOWED_ORIGIN  = "https://smartbooksprous.com"
 ONBOARDING_URL  = "https://smartbooksprous.com/onboarding.html"
 SITE_URL        = "https://smartbooksprous.com"
+CONTACT_EMAIL   = "smartbooksprollc@gmail.com"
+# Sender for contact-form emails. "onboarding@resend.dev" works out of the box;
+# switch to your own verified domain in Resend for better deliverability:
+CONTACT_FROM    = "SmartBooks Pro <onboarding@resend.dev>"
 
 # ── Secrets — set these via the CLI, never put real values here ─────────────────
 # Run once, then deploy:
@@ -19,10 +23,9 @@ SITE_URL        = "https://smartbooksprous.com"
 # npx wrangler secret put STRIPE_SECRET_KEY
 # paste your sk_test_... key when prompted
 
-# 1b. Set the WhatsApp reply auth secret (shared with the CS agent "Alex")
-# npx wrangler secret put WA_REPLY_SECRET
-#
-# (WHATSAPP_ACCESS_TOKEN is already set in Cloudflare — no action needed)
+# 1b. Set the Resend API key (contact form email delivery)
+# npx wrangler secret put RESEND_API_KEY
+# paste your re_... key when prompted (free account at resend.com)
 
 # 2. Deploy
 # npx wrangler deploy

@@ -7,7 +7,28 @@
   <meta property="og:title" content="SmartBooks Pro, LLC — Pro-Level Books. Small Business Price.">
   <meta property="og:description" content="Professional bookkeeping for small business owners. Bilingual service, transparent pricing, free consultation.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://smartbooksprous.com/">
+  <meta property="og:image" content="https://smartbooksprous.com/sbplogo.png">
+  <link rel="canonical" href="https://smartbooksprous.com/">
+  <link rel="icon" type="image/png" href="sbplogo.png">
+  <link rel="apple-touch-icon" href="sbplogo.png">
   <title>SmartBooks Pro, LLC — Pro-Level Books. Small Business Price.</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SmartBooks Pro, LLC",
+    "description": "Professional bookkeeping for small businesses. Bilingual English/Spanish. QuickBooks Online certified.",
+    "url": "https://smartbooksprous.com/",
+    "logo": "https://smartbooksprous.com/sbplogo.png",
+    "email": "smartbooksprollc@gmail.com",
+    "founder": { "@type": "Person", "name": "Daniel Tsou" },
+    "areaServed": "United States",
+    "availableLanguage": ["English", "Spanish"],
+    "priceRange": "$350 - $2500 per month",
+    "sameAs": ["https://www.linkedin.com/in/daniel-tsou-73465b46"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -93,11 +114,12 @@
     }
     .btn-gold {
       background: var(--gold);
-      color: var(--white);
+      color: var(--navy-deep);
       box-shadow: 0 4px 16px rgba(201,168,76,0.3);
     }
     .btn-gold:hover {
       background: var(--gold-dark);
+      color: var(--white);
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(201,168,76,0.45);
     }
@@ -242,6 +264,8 @@
       height: 36px;
       cursor: pointer;
       padding: 4px;
+      background: transparent;
+      border: none;
     }
     .hamburger span {
       display: block;
@@ -804,6 +828,11 @@
       border-color: rgba(201,168,76,0.3);
     }
     .faq-q {
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      text-align: left;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -842,7 +871,7 @@
       line-height: 1.75;
       font-size: 0.92rem;
     }
-    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-item.open .faq-a { max-height: 520px; }
 
     /* ===== CONTACT ===== */
     #contact { background: var(--white); }
@@ -932,6 +961,11 @@
       font-weight: 600;
       font-size: 0.92rem;
       text-align: center;
+    }
+    .form-error {
+      background: #fee2e2;
+      border-color: #fca5a5;
+      color: #991b1b;
     }
 
     /* ===== FOOTER ===== */
@@ -1033,6 +1067,11 @@
     .fade-up.in {
       opacity: 1;
       transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1; transform: none; transition: none; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
 
     /* ===== RESPONSIVE ===== */
@@ -1177,7 +1216,7 @@
     <div class="nav-container">
       <a href="#" class="nav-logo">
         <div class="nav-logo-icon">
-          <img src="sbplogo.png" alt="SmartBooks Pro" style="width:100%;height:100%;object-fit:contain;">
+          <img src="sbplogo.png" alt="SmartBooks Pro" width="42" height="42" style="width:100%;height:100%;object-fit:contain;">
         </div>
         <div class="nav-logo-text">
           <span class="logo-name">SmartBooks Pro</span>
@@ -1199,9 +1238,9 @@
         </div>
         <a href="#contact" class="btn btn-gold nav-cta" data-en="Book a Free Call" data-es="Llamada Gratis">Book a Free Call</a>
       </div>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <button type="button" class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
-      </div>
+      </button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <ul>
@@ -1229,7 +1268,7 @@
     <div class="hero-content fade-up">
       <div class="hero-logo-lockup">
         <div class="hero-logo-icon">
-          <img src="sbplogo.png" alt="SmartBooks Pro" style="width:100%;height:100%;object-fit:contain;">
+          <img src="sbplogo.png" alt="SmartBooks Pro" width="64" height="64" style="width:100%;height:100%;object-fit:contain;">
         </div>
         <span class="hero-logo-text">SmartBooks Pro, LLC</span>
       </div>
@@ -1407,7 +1446,7 @@
           <span class="qbo-icon">📦</span>
           <div>
             <span class="qbo-plan" data-en="Includes QBO Simple Start" data-es="Incluye QBO Simple Start">Includes QBO Simple Start</span>
-            <span class="qbo-value" data-en="(~$35/mo value)" data-es="(~$35/mes valor)">(~$38/mo value)</span>
+            <span class="qbo-value" data-en="(~$38/mo value)" data-es="(~$38/mes valor)">(~$38/mo value)</span>
           </div>
         </div>
         <ul class="pricing-features">
@@ -1434,7 +1473,7 @@
           <span class="qbo-icon">📦</span>
           <div>
             <span class="qbo-plan" data-en="Includes QBO Essentials" data-es="Incluye QBO Essentials">Includes QBO Essentials</span>
-            <span class="qbo-value" data-en="(~$65/mo value)" data-es="(~$65/mes valor)">(~$75/mo value)</span>
+            <span class="qbo-value" data-en="(~$75/mo value)" data-es="(~$75/mes valor)">(~$75/mo value)</span>
           </div>
         </div>
         <ul class="pricing-features">
@@ -1462,7 +1501,7 @@
           <span class="qbo-icon">📦</span>
           <div>
             <span class="qbo-plan" data-en="Includes QBO Plus" data-es="Incluye QBO Plus">Includes QBO Plus</span>
-            <span class="qbo-value" data-en="(~$99/mo value)" data-es="(~$99/mes valor)">(~$115/mo value)</span>
+            <span class="qbo-value" data-en="(~$115/mo value)" data-es="(~$115/mes valor)">(~$115/mo value)</span>
           </div>
         </div>
         <ul class="pricing-features">
@@ -1490,12 +1529,11 @@
           <span class="qbo-icon">📦</span>
           <div>
             <span class="qbo-plan" data-en="Includes QBO Advanced" data-es="Incluye QBO Advanced">Includes QBO Advanced</span>
-            <span class="qbo-value" data-en="(~$235/mo value)" data-es="(~$235/mes valor)">(~$275/mo value)</span>
+            <span class="qbo-value" data-en="(~$275/mo value)" data-es="(~$275/mes valor)">(~$275/mo value)</span>
           </div>
         </div>
         <ul class="pricing-features">
           <li class="feat-includes"><span class="feat-icon feat-check">✓</span> <span data-en="Everything in Controller" data-es="Todo en Contralor">Everything in Controller</span></li>
-          <li><span class="feat-icon feat-check">✓</span> <span data-en="State &amp; Local Sales Tax Preparation" data-es="Preparación de Impuestos sobre Ventas Estatales y Locales">State &amp; Local Sales Tax Preparation</span></li>
           <li><span class="feat-icon feat-check">✓</span> <span data-en="60 min/mo Strategy Session" data-es="Sesión de Estrategia 60 min/mes">60 min/mo Strategy Session</span></li>
           <li><span class="feat-icon feat-check">✓</span> <span data-en="Cash Flow Forecasting" data-es="Pronóstico de Flujo de Caja">Cash Flow Forecasting</span></li>
           <li><span class="feat-icon feat-check">✓</span> <span data-en="Budget vs. Actual Analysis" data-es="Análisis Presupuesto vs. Real">Budget vs. Actual Analysis</span></li>
@@ -1691,45 +1729,45 @@
     </div>
     <div class="faq-wrap">
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="Do I need to already have QuickBooks Online?" data-es="¿Necesito tener QuickBooks Online?">Do I need to already have QuickBooks Online?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="No — if you don't have QuickBooks Online yet, we can set it up for you as part of your onboarding. We'll configure everything correctly from the start so your books are accurate from day one." data-es="No — si aún no tienes QuickBooks Online, podemos configurarlo como parte de tu incorporación. Configuraremos todo correctamente desde el principio para que tus libros sean precisos desde el primer día.">No — if you don't have QuickBooks Online yet, we can set it up for you as part of your onboarding. We'll configure everything correctly from the start so your books are accurate from day one.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="What if my books are a mess or months behind?" data-es="¿Qué pasa si mis libros son un desastre o están meses atrasados?">What if my books are a mess or months behind?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="That's exactly what we're here for. Catch-up bookkeeping is one of our most common services. We'll assess the situation during your free consultation and give you a clear plan and timeline to get everything current." data-es="Para eso estamos exactamente aquí. La contabilidad de actualización es uno de nuestros servicios más comunes. Evaluaremos la situación durante tu consulta gratuita y te daremos un plan y cronograma claro.">That's exactly what we're here for. Catch-up bookkeeping is one of our most common services. We'll assess the situation during your free consultation and give you a clear plan and timeline to get everything current.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="Do you work with clients outside of Florida?" data-es="¿Trabajan con clientes fuera de Florida?">Do you work with clients outside of Florida?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="Yes! We work with small business owners across the United States. All of our services are delivered virtually using secure cloud-based tools, so your location is never a barrier." data-es="¡Sí! Trabajamos con dueños de pequeños negocios en todo Estados Unidos. Todos nuestros servicios se entregan virtualmente con herramientas seguras en la nube, por lo que tu ubicación nunca es una barrera.">Yes! We work with small business owners across the United States. All of our services are delivered virtually using secure cloud-based tools, so your location is never a barrier.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="What industries do you specialize in?" data-es="¿En qué industrias se especializan?">What industries do you specialize in?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="We specialize in STR/rental properties, landscaping, contractors and trades, beauty and wellness, and Hispanic-owned small businesses. That said, we serve any small business owner who needs reliable bookkeeping." data-es="Nos especializamos en propiedades de alquiler, jardinería, contratistas y oficios, belleza y bienestar, y pequeños negocios hispanos. Dicho esto, atendemos a cualquier dueño de pequeño negocio que necesite contabilidad confiable.">We specialize in STR/rental properties, landscaping, contractors and trades, beauty and wellness, and Hispanic-owned small businesses. That said, we serve any small business owner who needs reliable bookkeeping.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="How do I share my financial information securely?" data-es="¿Cómo comparto mi información financiera de forma segura?">How do I share my financial information securely?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="We use QuickBooks Online as our primary platform, which has enterprise-grade security. For document sharing, we use secure, encrypted portals. We never ask for passwords and follow strict data privacy standards." data-es="Usamos QuickBooks Online como plataforma principal, con seguridad de nivel empresarial. Para compartir documentos, usamos portales seguros y cifrados. Nunca pedimos contraseñas y seguimos estrictos estándares de privacidad de datos.">We use QuickBooks Online as our primary platform, which has enterprise-grade security. For document sharing, we use secure, encrypted portals. We never ask for passwords and follow strict data privacy standards.</div></div>
       </div>
       <div class="faq-item fade-up">
-        <div class="faq-q" onclick="toggleFAQ(this)">
+        <button type="button" class="faq-q" onclick="toggleFAQ(this)" aria-expanded="false">
           <span data-en="Can I switch plans as my business grows?" data-es="¿Puedo cambiar de plan a medida que mi negocio crece?">Can I switch plans as my business grows?</span>
           <div class="faq-icon">+</div>
-        </div>
+        </button>
         <div class="faq-a"><div class="faq-a-inner" data-en="Absolutely. Our plans are designed to grow with you. You can upgrade or downgrade at any time with 30 days notice. We'll always recommend the plan that best fits your current transaction volume and business needs." data-es="Absolutamente. Nuestros planes están diseñados para crecer contigo. Puedes mejorar o reducir en cualquier momento con 30 días de aviso. Siempre recomendaremos el plan que mejor se adapte a tu volumen de transacciones y necesidades.">Absolutely. Our plans are designed to grow with you. You can upgrade or downgrade at any time with 30 days notice. We'll always recommend the plan that best fits your current transaction volume and business needs.</div></div>
       </div>
     </div>
@@ -1756,7 +1794,6 @@
           <div class="contact-row-icon">🔗</div>
           <a href="https://www.linkedin.com/in/daniel-tsou-73465b46" target="_blank" rel="noopener" data-en="LinkedIn — Daniel Tsou" data-es="LinkedIn — Daniel Tsou">LinkedIn — Daniel Tsou</a>
         </div>
-        <!-- Replace 1XXXXXXXXXX with your actual WhatsApp number (digits only, with country code) -->
         <a href="https://wa.me/13054957636" class="wa-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span data-en="Chat on WhatsApp" data-es="Chatear en WhatsApp">Chat on WhatsApp</span>
@@ -1764,23 +1801,20 @@
       </div>
 
       <div class="fade-up">
-        <!--
-          To make this form functional, replace the onsubmit handler with a
-          real form service such as Formspree (formspree.io) or Netlify Forms.
-          Example: <form action="https://formspree.io/f/YOUR_ID" method="POST">
-        -->
         <form class="contact-form" onsubmit="handleSubmit(event)">
+          <!-- Honeypot: hidden from humans, bots fill it in -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;border:0;padding:0;">
           <div class="form-row">
             <div class="form-group">
-              <label data-en="Your Name *" data-es="Tu Nombre *">Your Name *</label>
-              <input type="text" name="name" required
+              <label for="cf-name" data-en="Your Name *" data-es="Tu Nombre *">Your Name *</label>
+              <input type="text" id="cf-name" name="name" required
                      placeholder="John Smith"
                      data-en-placeholder="John Smith"
                      data-es-placeholder="Juan García">
             </div>
             <div class="form-group">
-              <label data-en="Email Address *" data-es="Correo Electrónico *">Email Address *</label>
-              <input type="email" name="email" required
+              <label for="cf-email" data-en="Email Address *" data-es="Correo Electrónico *">Email Address *</label>
+              <input type="email" id="cf-email" name="email" required
                      placeholder="john@example.com"
                      data-en-placeholder="john@example.com"
                      data-es-placeholder="juan@ejemplo.com">
@@ -1788,15 +1822,15 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label data-en="Phone (optional)" data-es="Teléfono (opcional)">Phone (optional)</label>
-              <input type="tel" name="phone"
+              <label for="cf-phone" data-en="Phone (optional)" data-es="Teléfono (opcional)">Phone (optional)</label>
+              <input type="tel" id="cf-phone" name="phone"
                      placeholder="(555) 000-0000"
                      data-en-placeholder="(555) 000-0000"
                      data-es-placeholder="(555) 000-0000">
             </div>
             <div class="form-group">
-              <label data-en="Business Type *" data-es="Tipo de Negocio *">Business Type *</label>
-              <select name="business_type" required>
+              <label for="cf-biztype" data-en="Business Type *" data-es="Tipo de Negocio *">Business Type *</label>
+              <select id="cf-biztype" name="business_type" required>
                 <option value="" data-en="Select your industry..." data-es="Selecciona tu industria...">Select your industry...</option>
                 <option value="str"         data-en="STR / Rental Property"      data-es="Alquiler a Corto Plazo / Propiedad">STR / Rental Property</option>
                 <option value="landscaping" data-en="Landscaping / Lawn Care"    data-es="Jardinería / Cuidado del Césped">Landscaping / Lawn Care</option>
@@ -1807,8 +1841,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label data-en="Tell us about your bookkeeping needs" data-es="Cuéntanos sobre tus necesidades contables">Tell us about your bookkeeping needs</label>
-            <textarea name="message"
+            <label for="cf-message" data-en="Tell us about your bookkeeping needs" data-es="Cuéntanos sobre tus necesidades contables">Tell us about your bookkeeping needs</label>
+            <textarea id="cf-message" name="message"
                       placeholder="Tell us about your business, your current bookkeeping situation, and what you're looking for..."
                       data-en-placeholder="Tell us about your business, your current bookkeeping situation, and what you're looking for..."
                       data-es-placeholder="Cuéntanos sobre tu negocio, tu situación contable actual y lo que estás buscando..."></textarea>
@@ -1816,8 +1850,11 @@
           <div class="form-submit">
             <button type="submit" class="btn btn-gold" data-en="Send Message &amp; Book a Call" data-es="Enviar Mensaje y Reservar Llamada">Send Message &amp; Book a Call</button>
           </div>
-          <div class="form-success" id="formSuccess">
+          <div class="form-success" id="formSuccess" role="status">
             <span data-en="✅ Message sent! We'll be in touch within 24 hours." data-es="✅ ¡Mensaje enviado! Nos comunicaremos dentro de las 24 horas.">✅ Message sent! We'll be in touch within 24 hours.</span>
+          </div>
+          <div class="form-success form-error" id="formError" role="alert">
+            <span data-en="⚠️ Could not send your message. Please email or WhatsApp us directly." data-es="⚠️ No se pudo enviar tu mensaje. Por favor escríbenos por email o WhatsApp.">⚠️ Could not send your message. Please email or WhatsApp us directly.</span>
           </div>
         </form>
       </div>
@@ -1832,7 +1869,7 @@
       <div>
         <div class="footer-brand-logo">
           <div class="footer-brand-icon">
-            <img src="sbplogo.png" alt="SmartBooks Pro" style="width:100%;height:100%;object-fit:contain;">
+            <img src="sbplogo.png" alt="SmartBooks Pro" width="52" height="52" loading="lazy" style="width:100%;height:100%;object-fit:contain;">
           </div>
           <div>
             <div class="footer-brand-name">SmartBooks Pro, LLC</div>
@@ -1857,14 +1894,13 @@
         <ul class="footer-links">
           <li><a href="mailto:smartbooksprollc@gmail.com">smartbooksprollc@gmail.com</a></li>
           <li><a href="https://www.linkedin.com/in/daniel-tsou-73465b46" target="_blank" rel="noopener" data-en="LinkedIn Profile" data-es="Perfil de LinkedIn">LinkedIn Profile</a></li>
-          <!-- Replace 1XXXXXXXXXX with your actual WhatsApp number -->
           <li><a href="https://wa.me/13054957636" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
     </div>
     <hr class="footer-hr">
     <div class="footer-bottom">
-      <p class="footer-copy" data-en="© 2025 SmartBooks Pro, LLC | All Rights Reserved" data-es="© 2025 SmartBooks Pro, LLC | Todos los Derechos Reservados">© 2025 SmartBooks Pro, LLC | All Rights Reserved</p>
+      <p class="footer-copy"><span id="footerYear">© 2026</span> <span data-en="SmartBooks Pro, LLC | All Rights Reserved" data-es="SmartBooks Pro, LLC | Todos los Derechos Reservados">SmartBooks Pro, LLC | All Rights Reserved</span></p>
       <div class="footer-policies">
         <a href="terms.html" data-en="Terms of Service" data-es="Términos de Servicio">Terms of Service</a>
         <a href="privacy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
@@ -1878,7 +1914,6 @@
 </footer>
 
 <!-- ==================== FLOATING WHATSAPP ==================== -->
-<!-- Replace 1XXXXXXXXXX with your actual WhatsApp number (digits only, e.g. 13055551234) -->
 <a href="https://wa.me/13054957636" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <span class="wa-float-tooltip" data-en="Chat on WhatsApp" data-es="Chatear en WhatsApp">Chat on WhatsApp</span>
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1890,6 +1925,7 @@ let currentLang = 'en';
 
 function setLang(lang) {
   currentLang = lang;
+  try { localStorage.setItem('sbp-lang', lang); } catch (e) {}
 
   document.querySelectorAll('[data-en]').forEach(el => {
     const val = el.getAttribute('data-' + lang);
@@ -1912,6 +1948,14 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 }
 
+/* Restore saved language, or default from the browser language */
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem('sbp-lang'); } catch (e) {}
+  const lang = saved || ((navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'en');
+  if (lang !== 'en') setLang(lang);
+})();
+
 /* ===== NAVBAR SCROLL ===== */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -1924,18 +1968,27 @@ function toggleMenu() {
   const ham  = document.getElementById('hamburger');
   menu.classList.toggle('open');
   ham.classList.toggle('open');
+  ham.setAttribute('aria-expanded', menu.classList.contains('open'));
 }
 function closeMenu() {
   document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
+  const ham = document.getElementById('hamburger');
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
 }
 
 /* ===== FAQ ACCORDION ===== */
 function toggleFAQ(questionEl) {
   const item   = questionEl.parentElement;
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    questionEl.setAttribute('aria-expanded', 'true');
+  }
 }
 
 /* ===== SCROLL ANIMATIONS ===== */
@@ -1955,13 +2008,44 @@ document.querySelectorAll('.fade-up').forEach((el, i) => {
 });
 
 /* ===== CONTACT FORM ===== */
-function handleSubmit(e) {
+const CONTACT_API = 'https://smartbooksprous.com/api/contact';
+
+async function handleSubmit(e) {
   e.preventDefault();
+  const form    = e.target;
+  const button  = form.querySelector('button[type="submit"]');
   const success = document.getElementById('formSuccess');
-  success.style.display = 'block';
-  e.target.reset();
-  setTimeout(() => { success.style.display = 'none'; }, 7000);
+  const error   = document.getElementById('formError');
+  success.style.display = 'none';
+  error.style.display   = 'none';
+
+  const data = Object.fromEntries(new FormData(form).entries());
+
+  button.disabled = true;
+  button.style.opacity = '0.6';
+
+  try {
+    const res = await fetch(CONTACT_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (!res.ok || !json.success) throw new Error(json.error || 'Send failed');
+
+    success.style.display = 'block';
+    form.reset();
+    setTimeout(() => { success.style.display = 'none'; }, 10000);
+  } catch (err) {
+    error.style.display = 'block';
+  } finally {
+    button.disabled = false;
+    button.style.opacity = '';
+  }
 }
+
+/* ===== FOOTER YEAR ===== */
+document.getElementById('footerYear').textContent = '© ' + new Date().getFullYear();
 
 /* ===== SMOOTH SCROLL (offset for fixed navbar) ===== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

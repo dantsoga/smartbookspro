@@ -54,7 +54,7 @@ Each `.pricing-card` follows: plan name → `.pricing-tagline` (italic) → pric
 
 ## Pending production tasks
 
-- **Contact form**: currently client-side only (shows a success message, no data is sent). Wire up to Formspree (`https://formspree.io/f/YOUR_ID`) or Netlify Forms before going live.
+- **Contact form**: wired to the Cloudflare Worker at `POST /api/contact`, which emails submissions via Resend. Requires the `RESEND_API_KEY` secret on the worker (`npx wrangler secret put RESEND_API_KEY`); until it's set the form shows a friendly error.
 - **Testimonials**: placeholder copy is in place. The section is marked with `<!-- Replace with real testimonials when available -->`.
 - **WhatsApp number**: all three `wa.me` links already use `13054957636` — verify this is the correct number before launch.
 
