@@ -10,7 +10,7 @@ compatibility_date = "2025-01-01"
 ALLOWED_ORIGIN  = "https://smartbooksprous.com"
 ONBOARDING_URL  = "https://smartbooksprous.com/onboarding.html"
 SITE_URL        = "https://smartbooksprous.com"
-CONTACT_EMAIL   = "smartbooksprollc@gmail.com"
+CONTACT_EMAIL   = "contact@smartbooksprous.com"
 # Sender for contact-form emails. "onboarding@resend.dev" works out of the box;
 # switch to your own verified domain in Resend for better deliverability:
 CONTACT_FROM    = "SmartBooks Pro <onboarding@resend.dev>"
