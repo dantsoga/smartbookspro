@@ -58,6 +58,10 @@ Each `.pricing-card` follows: plan name → `.pricing-tagline` (italic) → pric
 - **Testimonials**: placeholder copy is in place. The section is marked with `<!-- Replace with real testimonials when available -->`.
 - **WhatsApp number**: all three `wa.me` links already use `13054957636` — verify this is the correct number before launch.
 
+## Spanish landing page (`es/index.html`)
+
+Generated — never edit by hand. Run `node scripts/build-es.js` after any change to `index.html`; it applies the `data-es` translations statically, sets Spanish meta/canonical (`https://smartbooksprous.com/es/`), and makes asset/link URLs root-relative. Both pages carry reciprocal `hreflang` tags, and `sitemap.xml` lists both. Include `es/index.html`, `sitemap.xml`, and `robots.txt` in every Pages deploy.
+
 ## Content ownership
 
 - Email: `contact@smartbooksprous.com` (business inbox, shown on all pages; owner's personal email is `dtsou.consulting@gmail.com`)

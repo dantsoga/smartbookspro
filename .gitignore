@@ -16,3 +16,6 @@ worker/.dev.vars
 # Secrets — never commit real credentials
 *.env
 .env*
+
+# Node (build script)
+node_modules/
